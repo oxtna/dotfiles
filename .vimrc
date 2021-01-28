@@ -70,14 +70,6 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeIgnore = [ '\.swp$' ]
 
-" ALE settings
-let g:ale_completion_enabled = 1
-let g:ale_lint_on_text_changed = 'always'
-let g:ale_set_signs = 1
-let g:ale_echo_cursor = 1
-let g:ale_set_balloons = 1
-let g:ale_linters = { 'c': [ 'gcc', 'clang', 'clangcheck' ] }
-
 " Lightline format
 let g:lightline = {
 	\ 'colorscheme': 'PaperColor',
