@@ -53,13 +53,13 @@ if [ "$color_prompt" = yes ]; then
     PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
 else
 	# This is the one that's being used.
-    PS1='${debian_chroot:+($debian_chroot)}'
+	PS1='${debian_chroot:+($debian_chroot)}'
 	  # [Timestamp]
-	PS1+='\[\e[100;93m\][\t]\[\e[0m\]'
+	PS1+='\[\e[93m\][\t]\[\e[0m\]'
 	  # User@Host : WorkingDir
-	PS1+='  \[\e[92m\]\u@\h\[\e[0m\] : \[\e[96m\]\w\[\e[0m\]\n'
+	PS1+=' \[\e[92m\]\u@\h\[\e[0m\] : \[\e[96m\]\w\[\e[0m\]'
 	  # If effective UID is 0, #, otherwise $
-	PS1+='    \[\e[7;97m\]\$\[\e[0m\] '
+	PS1+=' \[\e[97m\]\$\[\e[0m\] '
 fi
 unset color_prompt force_color_prompt
 
