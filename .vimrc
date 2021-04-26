@@ -60,6 +60,16 @@ set shiftwidth=4
 " Default settings, just to make sure
 set softtabstop=0 noexpandtab
 
+" Plugins will be downloaded under the specified directory
+call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+
+" Declare the list of plugins
+Plug 'preservim/nerdtree'
+Plug 'itchyny/lightline.vim'
+
+" Plugins become visible to Vim after this call
+call plug#end()
+
 " Make NERDTree shortcuts
 nmap <F6>	:NERDTreeToggle<CR>
 nmap <F7>	:NERDTreeRefreshRoot<CR>
@@ -72,7 +82,7 @@ let NERDTreeIgnore = [ '\.swp$' ]
 
 " Lightline format
 let g:lightline = {
-	\ 'colorscheme': 'PaperColor',
+	\ 'colorscheme': 'powerline',
 	\ 'active': {
 	\	'left': [
 	\		[ 'mode', 'paste' ],
