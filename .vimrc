@@ -51,6 +51,8 @@ inoremap <Right>	<Nop>
 inoremap <Up>		<Nop>
 inoremap <Down>		<Nop>
 
+filetype plugin indent on
+
 " Make tabs appear like 4 spaces
 set tabstop=4
 
@@ -58,7 +60,10 @@ set tabstop=4
 set shiftwidth=4
 
 " Default settings, just to make sure
-set softtabstop=0 noexpandtab
+set softtabstop=0
+
+" Insert 4 spaces on pressing tab
+set expandtab
 
 " Plugins will be downloaded under the specified directory
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
