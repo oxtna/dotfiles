@@ -62,11 +62,11 @@ fi
     # This is the one that's being used.
     PS1='${debian_chroot:+($debian_chroot)}'
     # [Timestamp]
-    PS1+='\[\e[93m\][\t]\[\e[0m\]'
+    PS1+='\[\e[33m\][\t]\[\e[0m\]'
     # User@Host : WorkingDir
-    PS1+=' \[\e[92m\]\u\[\e[94m\]@\[\e[92m\]\h\[\e[0m\] : \[\e[96m\]\w\[\e[0m\]'
+    PS1+=' \[\e[32m\]\u\[\e[34m\]@\[\e[32m\]\h\[\e[0m\] : \[\e[36m\]\w\[\e[0m\]'
     # If effective UID is 0, #, otherwise $
-    PS1+=' \[\e[97m\]\$\[\e[0m\] '
+    PS1+=' \[\e[37m\]\$\[\e[0m\] '
 #fi
 unset color_prompt force_color_prompt
 
@@ -137,3 +137,4 @@ alias cd...='cd .. && cd ..'
 # python alias
 # alias python='python3.9'
 
+. "$HOME/.cargo/env"

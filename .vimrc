@@ -1,5 +1,5 @@
 " Syntax highlighting
-syntax on
+syntax enable
 
 " Show current command while typing
 set showcmd
@@ -71,6 +71,12 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 " Declare the list of plugins
 Plug 'preservim/nerdtree'
 Plug 'itchyny/lightline.vim'
+Plug 'frazrepo/vim-rainbow'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-surround'
+Plug 'w0rp/ale'
+Plug 'valloric/youcompleteme'
+Plug 'altercation/vim-colors-solarized'
 
 " Plugins become visible to Vim after this call
 call plug#end()
@@ -84,6 +90,17 @@ let NERDTreeShowHidden = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeIgnore = [ '\.swp$' ]
+
+" YouCompleteMe settings
+let g:ycm_auto_trigger = 1
+
+" vim-rainbow activation
+let g:rainbow_active = 1
+
+" solarized theme
+set background=dark
+let g:solarized_termtrans = 1
+colorscheme solarized
 
 " Lightline format
 let g:lightline = {
