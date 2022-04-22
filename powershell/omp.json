@@ -1,0 +1,150 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "style": "plain",
+          "properties": {
+            "windows": "\ue70f"
+          },
+          "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} ",
+          "type": "os"
+        },
+        {
+          "background": "#1b1b1b",
+          "foreground": "#d80d61",
+          "powerline_symbol": "\ue0b2",
+          "invert_powerline": true,
+          "style": "powerline",
+          "template": " {{ .UserName }}",
+          "type": "session"
+        },
+        {
+          "background": "#1b1b1b",
+          "foreground": "#d80d61",
+          "powerline_symbol": "\ue0b0",
+          "style": "powerline",
+          "template": "- root \uf0e7",
+          "type": "root"
+        },
+        {
+          "background": "#1b1b1b",
+          "foreground": "#ffbb00",
+          "powerline_symbol": "\ue0b1",
+          "invert_powerline": true,
+          "style": "powerline",
+          "properties": {
+            "time_format": "02/01/2006 15:04:05"
+          },
+          "template": " {{ .CurrentDate | date .Format }} ",
+          "type": "time"
+        },
+        {
+          "background": "#1b1b1b",
+          "foreground": "#33dd2d",
+          "powerline_symbol": "\ue0b0",
+          "style": "powerline",
+          "properties": {
+            "mapped_locations": {
+              "~\\source\\repos": "~/</>"
+            },
+            "folder_separator_icon": "/",
+            "style": "full"
+          },
+          "template": "\ue5ff {{ path .Path .Location }} ",
+          "type": "path"
+        },
+        {
+          "background": "#1b1b1b",
+          "foreground": "#3a86ff",
+          "powerline_symbol": "\ue0b0",
+          "style": "powerline",
+          "properties": {
+            "fetch_stash_count": true,
+            "fetch_upstream_icon": true
+          },
+          "template": "{{ .UpstreamIcon }}{{ .HEAD }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} ",
+          "type": "git"
+        },
+        {
+          "background": "#1b1b1b",
+          "foreground": "#ffce42",
+          "leading_diamond": " \ue0b2",
+          "trailing_diamond": "\ue0b0",
+          "style": "diamond",
+          "properties": {
+            "display_mode": "environment",
+            "fetch_virtual_env": true
+          },
+          "template": " \ue73c {{ .Full }} ",
+          "type": "python"
+        },
+        {
+          "background": "#1b1b1b",
+          "foreground": "#2ac724",
+          "leading_diamond": " \ue0b2",
+          "trailing_diamond": "\ue0b0",
+          "style": "diamond",
+          "properties": {
+            "display_mode": "context",
+            "fetch_version": true
+          },
+          "template": " \uf898 {{ .Full }} ",
+          "type": "node"
+        },
+        {
+          "background": "#1b1b1b",
+          "foreground": "#5c2d91",
+          "leading_diamond": " \ue0b2",
+          "trailing_diamond": "\ue0b0",
+          "style": "diamond",
+          "properties": {
+            "display_mode": "context",
+            "fetch_version": true
+          },
+          "template": " {{ `.NET` }} {{ .Full }} ",
+          "type": "dotnet"
+        },
+        {
+          "background": "#1b1b1b",
+          "foreground": "#007d9c",
+          "leading_diamond": " \ue0b2",
+          "trailing_diamond": "\ue0b0",
+          "style": "diamond",
+          "properties": {
+            "display_mode": "context",
+            "fetch_version": true
+          },
+          "template": " GO {{ .Full }} ",
+          "type": "go"
+        },
+        {
+          "background": "#f1184c",
+          "foreground": "#1b1b1b",
+          "leading_diamond": " \ue0b2",
+          "trailing_diamond": "\ue0b0",
+          "style": "diamond",
+          "template": "{{ if gt .Code 0 }} \uf00d {{ end }}",
+          "type": "exit"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "#d80d61",
+          "style": "plain",
+          "template": "\uf63d ",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "version": 2
+}
