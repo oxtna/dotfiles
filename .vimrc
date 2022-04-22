@@ -71,11 +71,11 @@ nnoremap <Right>    <Nop>
 nnoremap <Up>       <Nop>
 nnoremap <Down>     <Nop>
 
-" Disable arrows in insert mode
-inoremap <Left>     <Nop>
-inoremap <Right>    <Nop>
-inoremap <Up>       <Nop>
-inoremap <Down>     <Nop>
+" Disable arrows in visual mode
+vnoremap <Left>     <Nop>
+vnoremap <Right>    <Nop>
+vnoremap <Up>       <Nop>
+vnoremap <Down>     <Nop>
 
 " Buffer navigation
 noremap <leader>z :bp<CR>
@@ -136,7 +136,7 @@ call plug#end()
 
 " Make NERDTree shortcuts
 nmap <F6>   :NERDTreeToggle<CR>
-nmap <F7>   :NERDTreeRefreshRoot<CR>
+nmap <F5>   :NERDTreeRefreshRoot<CR>
 
 " NERDTree settings
 let NERDTreeShowHidden = 1
@@ -144,9 +144,6 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeIgnore = [ '\.swp$' ]
 let NERDTreeWinSize = 60
-
-" YouCompleteMe settings
-let g:ycm_auto_trigger = 1
 
 " vim-rainbow activation
 let g:rainbow_active = 1
