@@ -108,12 +108,12 @@ set termguicolors
 lua require('plugins')
 
 " nvim-tree settings
-let g:nvim_tree_indent_markers = 1
+" let g:nvim_tree_indent_markers = 1
 let g:nvim_tree_highlight_opened_files = 1
 let g:nvim_tree_add_trailing = 1
 let g:nvim_tree_symlink_arrow = ' -> '
 let g:nvim_tree_icon_padding = '  '
-let g:nvim_tree_special_files = {'README.md': 1}
+let g:nvim_tree_special_files = { 'README.md': 1 }
 
 " nvim-tree shortcuts
 noremap <F5> :NvimTreeRefresh<CR>
