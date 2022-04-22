@@ -59,10 +59,10 @@ set mouse=a
 
 " Show hidden characters
 set list
-set listchars=tab:▶-,trail:~,extends:>,precedes:<,nbsp:·
+set listchars=tab:\|·,trail:~,extends:>,precedes:<,nbsp:~
 
 " Better line wrapping
-set showbreak=\\¬
+set showbreak=\ ¬
 set breakindent
 
 " Disable arrows in normal mode

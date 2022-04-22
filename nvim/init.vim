@@ -40,7 +40,7 @@ filetype plugin indent on
 
 " Show invisible characters
 set list
-set listchars=tab:▶-,trail:~,extends:>,precedes:<,nbsp:·
+set listchars=tab:\|·,trail:~,extends:>,precedes:<,nbsp:~
 
 " Better line wrapping
 set showbreak=\ ¬
