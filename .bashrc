@@ -56,13 +56,28 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-PS1='\[\e[0m\]${debian_chroot:+($debian_chroot)}'
-# [Timestamp]
-PS1+='\[\e[33m\][\t]\[\e[0m\]'
-# User@Host : WorkingDir
-PS1+=' \[\e[32m\]\u\[\e[34m\]@\[\e[32m\]\h\[\e[0m\] : \[\e[36m\]\w\[\e[0m\]'
-# If effective UID is 0, #, otherwise $
-PS1+=' \[\e[37m\]\$\[\e[0m\] '
+PROMPT_COMMAND=__prompt_command
+
+__prompt_command() {
+    local exit_code="$?"
+    # Prompt separator
+    local separator="\[\e[97m\]:\[\e[0m\]"
+
+    # Chroot
+    PS1=" \[\e[35m\]${debian_chroot:+$debian_chroot}${debian_chroot:+ ${separator} }\[\e[0m\]"
+    # Timestamp
+    PS1+="\[\e[93m\]\t ${separator} \[\e[0m\]"
+    # User@Host
+    PS1+="\[\e[92m\]\u\[\e[94m\]@\[\e[92m\]\h ${separator} \[\e[0m\]"
+    # Current Directory
+    PS1+="\[\e[96m\]\w \[\e[0m\]"
+    # Error Code
+    if [ ${exit_code} -ne 0 ]; then
+        PS1+="${separator} \[\e[31m\]${exit_code} \[\e[0m\]"
+    fi
+    # If effective UID is 0 (user is root), `#`, otherwise `$`
+    PS1+="\[\e[97m\]\$ \[\e[0m\]"
+}
 
 unset color_prompt force_color_prompt
 
