@@ -56,7 +56,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-PS1='${debian_chroot:+($debian_chroot)}'
+PS1='\[\e[0m\]${debian_chroot:+($debian_chroot)}'
 # [Timestamp]
 PS1+='\[\e[33m\][\t]\[\e[0m\]'
 # User@Host : WorkingDir
