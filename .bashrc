@@ -56,18 +56,14 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-#if [ "$color_prompt" = yes ]; then
-#    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-#else
-    # This is the one that's being used.
-    PS1='${debian_chroot:+($debian_chroot)}'
-    # [Timestamp]
-    PS1+='\[\e[33m\][\t]\[\e[0m\]'
-    # User@Host : WorkingDir
-    PS1+=' \[\e[32m\]\u\[\e[34m\]@\[\e[32m\]\h\[\e[0m\] : \[\e[36m\]\w\[\e[0m\]'
-    # If effective UID is 0, #, otherwise $
-    PS1+=' \[\e[37m\]\$\[\e[0m\] '
-#fi
+PS1='${debian_chroot:+($debian_chroot)}'
+# [Timestamp]
+PS1+='\[\e[33m\][\t]\[\e[0m\]'
+# User@Host : WorkingDir
+PS1+=' \[\e[32m\]\u\[\e[34m\]@\[\e[32m\]\h\[\e[0m\] : \[\e[36m\]\w\[\e[0m\]'
+# If effective UID is 0, #, otherwise $
+PS1+=' \[\e[37m\]\$\[\e[0m\] '
+
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
@@ -135,6 +131,5 @@ alias cd..='cd ..'
 alias cd...='cd .. && cd ..'
 
 # python alias
-# alias python='python3.9'
+alias py='python3'
 
-. "$HOME/.cargo/env"
