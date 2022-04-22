@@ -1,3 +1,6 @@
+" Sanity
+set nocompatible
+
 " Set modeline
 set modeline
 set modelines=10
@@ -52,20 +55,27 @@ nmap Q <Nop>
 set noerrorbells visualbell t_vb=
 
 " Mouse support
-" set mouse+=a
-" set mouse=a
+set mouse=a
+
+" Show hidden characters
+set list
+set listchars=tab:▶-,trail:~,extends:>,precedes:<,nbsp:·
+
+" Better line wrapping
+set showbreak=\\¬
+set breakindent
 
 " Disable arrows in normal mode
-nnoremap <Left>		<Nop>
-nnoremap <Right>	<Nop>
-nnoremap <Up>		<Nop>
-nnoremap <Down>		<Nop>
+nnoremap <Left>     <Nop>
+nnoremap <Right>    <Nop>
+nnoremap <Up>       <Nop>
+nnoremap <Down>     <Nop>
 
 " Disable arrows in insert mode
-inoremap <Left>		<Nop>
-inoremap <Right>	<Nop>
-inoremap <Up>		<Nop>
-inoremap <Down>		<Nop>
+inoremap <Left>     <Nop>
+inoremap <Right>    <Nop>
+inoremap <Up>       <Nop>
+inoremap <Down>     <Nop>
 
 " Buffer navigation
 noremap <leader>z :bp<CR>
@@ -107,6 +117,9 @@ set expandtab
 " Ruby indentation rules
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
 
+" JavaScript indentation rules
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+
 " Plugins will be downloaded under the specified directory
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
@@ -122,8 +135,8 @@ Plug 'altercation/vim-colors-solarized'
 call plug#end()
 
 " Make NERDTree shortcuts
-nmap <F6>	:NERDTreeToggle<CR>
-nmap <F7>	:NERDTreeRefreshRoot<CR>
+nmap <F6>   :NERDTreeToggle<CR>
+nmap <F7>   :NERDTreeRefreshRoot<CR>
 
 " NERDTree settings
 let NERDTreeShowHidden = 1
@@ -145,27 +158,27 @@ colorscheme solarized
 
 " Lightline format
 let g:lightline = {
-	\ 'colorscheme': 'powerline',
-	\ 'active': {
-	\	'left': [
-	\		[ 'mode', 'paste' ],
-	\		[ 'readonly', 'filepath' ]
-	\		],
-	\	'right': [
-	\		[ 'lineinfo' ],
-	\		[ 'percent' ],
-	\		[ 'fileencoding' ],
-	\		[ 'filetype' ]
-	\		]
-	\ 	},
-	\ 'component_function': {
-	\	'filepath': 'LightlineFilepath'
-	\	}
-	\ }
+    \ 'colorscheme': 'powerline',
+    \ 'active': {
+    \   'left': [
+    \       [ 'mode', 'paste' ],
+    \       [ 'readonly', 'filepath' ]
+    \       ],
+    \   'right': [
+    \       [ 'lineinfo' ],
+    \       [ 'percent' ],
+    \       [ 'fileencoding' ],
+    \       [ 'filetype' ]
+    \       ]
+    \   },
+    \ 'component_function': {
+    \   'filepath': 'LightlineFilepath'
+    \   }
+    \ }
 
 function! LightlineFilepath()
-	let filepath = expand('%:t') !=# '' ? ( len(expand('%:p')) > 50 ? expand('%:t') : expand('%:p') ) : '[No Name]'
-	let modified = &modified ? ' +' : ''
-	return filepath . modified
+    let filepath = expand('%:t') !=# '' ? ( len(expand('%:p')) > 50 ? expand('%:t') : expand('%:p') ) : '[No Name]'
+    let modified = &modified ? ' +' : ''
+    return filepath . modified
 endfunction
 
