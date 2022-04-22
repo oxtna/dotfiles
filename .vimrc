@@ -1,3 +1,10 @@
+" Set modeline
+set modeline
+set modelines=10
+
+" File encoding
+set encoding=utf-8
+
 " Syntax highlighting
 syntax enable
 
@@ -29,6 +36,15 @@ set smartcase
 " Enable searching as you type
 set incsearch
 
+" Highlight during searching
+set hlsearch
+
+" Set leader key
+let mapleader=','
+
+" Stop highlighting search
+nnoremap <silent> <leader><space> :noh<CR>
+
 " Unbind Ex mode
 nmap Q <Nop>
 
@@ -51,6 +67,29 @@ inoremap <Right>	<Nop>
 inoremap <Up>		<Nop>
 inoremap <Down>		<Nop>
 
+" Buffer navigation
+noremap <leader>z :bp<CR>
+noremap <leader>x :bn<CR>
+noremap <leader>c :bd<CR>
+
+" Window navigation
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+" QoL
+cnoreabbrev W!    w!
+cnoreabbrev Q!    q!
+cnoreabbrev Qall! qall!
+cnoreabbrev Wq    wq
+cnoreabbrev Wa    wa
+cnoreabbrev wQ    wq
+cnoreabbrev WQ    wq
+cnoreabbrev W     w
+cnoreabbrev Q     q
+cnoreabbrev Qall  qall
+
 filetype plugin indent on
 
 " Make tabs appear like 4 spaces
@@ -65,6 +104,9 @@ set softtabstop=0
 " Insert 4 spaces on pressing tab
 set expandtab
 
+" Ruby indentation rules
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
+
 " Plugins will be downloaded under the specified directory
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
@@ -74,8 +116,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'frazrepo/vim-rainbow'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
-Plug 'w0rp/ale'
-Plug 'valloric/youcompleteme'
 Plug 'altercation/vim-colors-solarized'
 
 " Plugins become visible to Vim after this call
@@ -90,6 +130,7 @@ let NERDTreeShowHidden = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeIgnore = [ '\.swp$' ]
+let NERDTreeWinSize = 60
 
 " YouCompleteMe settings
 let g:ycm_auto_trigger = 1
@@ -127,3 +168,4 @@ function! LightlineFilepath()
 	let modified = &modified ? ' +' : ''
 	return filepath . modified
 endfunction
+
