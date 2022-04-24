@@ -17,6 +17,12 @@ set guicursor=n-v-c-sm:block-blinkwait4000-blinkon1000-blinkoff1000
 set number
 set relativenumber
 
+" Show next lines while scrolling
+set scrolloff=4
+
+" Show next columns while scrolling
+set sidescrolloff=4
+
 " Tab settings
 set autoindent
 set softtabstop=0

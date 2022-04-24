@@ -20,6 +20,12 @@ set ruler
 " Turn off mode info because it's in the statusline
 set noshowmode
 
+" Show next lines while scrolling
+set scrolloff=4
+
+" Show next columns while scrolling
+set sidescrolloff=4
+
 " Show line numbers
 set number
 
