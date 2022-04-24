@@ -37,6 +37,7 @@ autocmd FileType ruby setlocal shiftwidth
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 
 " Other sane defaults
+set cursorline
 set encoding=utf-8
 set showcmd
 set noshowmode
@@ -46,7 +47,7 @@ filetype plugin indent on
 
 " Show invisible characters
 set list
-set listchars=tab:\|·,trail:~,extends:>,precedes:<,nbsp:~
+set listchars=tab:\|·,trail:·,extends:>,precedes:<,nbsp:·
 
 " Better line wrapping
 set showbreak=\ ¬
@@ -126,6 +127,16 @@ noremap <F5> :NvimTreeRefresh<CR>
 noremap <F6> :NvimTreeToggle<CR>
 noremap <F7> :NvimTreeFindFile<CR>
 
+" Setup colorscheme
+lua << END
+local groups = {
+  NonText = { fg = "#3be368" },
+  Whitespace = { fg = "#3be368" },
+}
+
+require("nightfox").setup({ groups = groups })
+END
+
 " Colorscheme plugin
 colorscheme terafox
 
@@ -134,7 +145,7 @@ colorscheme terafox
 lua << END
 local colors = {
   red = '#ca1243',
-  grey = '#a0a1a7',
+  grey = '#616266',
   black = '#383a42',
   white = '#f3f3f3',
   violet = '#660965',

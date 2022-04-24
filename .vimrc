@@ -26,6 +26,9 @@ set scrolloff=4
 " Show next columns while scrolling
 set sidescrolloff=4
 
+" Highlight the line with the cursor
+set cursorline
+
 " Show line numbers
 set number
 
@@ -65,7 +68,7 @@ set mouse=a
 
 " Show hidden characters
 set list
-set listchars=tab:\|·,trail:~,extends:>,precedes:<,nbsp:~
+set listchars=tab:\|·,trail:·,extends:>,precedes:<,nbsp:·
 
 " Better line wrapping
 set showbreak=\ ¬
@@ -158,6 +161,9 @@ let g:rainbow_active = 1
 set background=dark
 let g:solarized_termtrans = 1
 colorscheme solarized
+
+" Set current line number colors and style
+hi CursorLineNr cterm=bold ctermfg=magenta ctermbg=black
 
 " Lightline format
 let g:lightline = {
