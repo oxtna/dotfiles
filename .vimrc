@@ -155,23 +155,23 @@ colorscheme solarized
 
 " Lightline format
 let g:lightline = {
-    \ 'colorscheme': 'powerline',
-    \ 'active': {
-    \   'left': [
-    \       [ 'mode', 'paste' ],
-    \       [ 'readonly', 'filepath' ]
-    \       ],
-    \   'right': [
-    \       [ 'lineinfo' ],
-    \       [ 'percent' ],
-    \       [ 'fileencoding' ],
-    \       [ 'filetype' ]
-    \       ]
-    \   },
-    \ 'component_function': {
-    \   'filepath': 'LightlineFilepath'
-    \   }
-    \ }
+  \  'colorscheme': 'powerline',
+  \  'active': {
+  \    'left': [
+  \      [ 'mode', 'paste' ],
+  \      [ 'readonly', 'filepath' ]
+  \    ],
+  \    'right': [
+  \      [ 'lineinfo' ],
+  \      [ 'percent' ],
+  \      [ 'fileencoding' ],
+  \      [ 'filetype' ]
+  \    ]
+  \  },
+  \  'component_function': {
+  \    'filepath': 'LightlineFilepath'
+  \  }
+  \}
 
 function! LightlineFilepath()
     let filepath = expand('%:t') !=# '' ? ( len(expand('%:p')) > 50 ? expand('%:t') : expand('%:p') ) : '[No Name]'
