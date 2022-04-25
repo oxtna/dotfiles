@@ -115,7 +115,6 @@ set termguicolors
 lua require('plugins')
 
 " nvim-tree settings
-" let g:nvim_tree_indent_markers = 1
 let g:nvim_tree_highlight_opened_files = 1
 let g:nvim_tree_add_trailing = 1
 let g:nvim_tree_symlink_arrow = ' -> '
@@ -127,22 +126,19 @@ noremap <F5> :NvimTreeRefresh<CR>
 noremap <F6> :NvimTreeToggle<CR>
 noremap <F7> :NvimTreeFindFile<CR>
 
-" Setup colorscheme
 lua << END
+-- Colorscheme setup
 local groups = {
   NonText = { fg = "#3be368" },
   Whitespace = { fg = "#3be368" },
 }
 
 require("nightfox").setup({ groups = groups })
-END
 
-" Colorscheme plugin
-colorscheme terafox
+vim.cmd("colorscheme terafox")
 
-" Initialize status bar
-" Thanks `shadmansaleh`
-lua << END
+-- Initialize status bar
+-- Thanks `shadmansaleh`
 local colors = {
   red = '#ca1243',
   grey = '#616266',

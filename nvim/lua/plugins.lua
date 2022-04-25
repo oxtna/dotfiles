@@ -25,13 +25,16 @@ local return_value = require('packer').startup(function()
     -- Color scheme
     use 'EdenEast/nightfox.nvim'
 
+    -- Tab bar
+    use {
+        'romgrk/barbar.nvim',
+        requires = {'kyazdani42/nvim-web-devicons'}
+    }
+
     -- Status bar
     use {
         'nvim-lualine/lualine.nvim',
-        requires = {
-            'kyazdani42/nvim-web-devicons',
-            opt = true
-        }
+        requires = {'kyazdani42/nvim-web-devicons'}
     }
 
     -- Discord Rich Presence
