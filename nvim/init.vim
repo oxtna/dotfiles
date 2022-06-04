@@ -30,6 +30,21 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 
+" Set leader key
+let mapleader=','
+
+" Surround mappings
+nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
+nnoremap <leader>` viw<esc>a`<esc>bi`<esc>lel
+nnoremap <leader>( viw<esc>a(<esc>bi)<esc>lel
+nnoremap <leader>[ viw<esc>a[<esc>bi]<esc>lel
+vnoremap <leader>" <esc>`<i"<esc>`>a"<esc>
+vnoremap <leader>' <esc>`<i'<esc>`>a'<esc>
+vnoremap <leader>` <esc>`<i`<esc>`>a`<esc>
+vnoremap <leader>( <esc>`<i(<esc>`>a)<esc>
+vnoremap <leader>[ <esc>`<i[<esc>`>a]<esc>
+
 " Ruby indentation rules
 autocmd FileType ruby setlocal shiftwidth
 
@@ -63,9 +78,6 @@ set smartcase
 set incsearch
 set hlsearch
 set wildmenu
-
-" Set leader key
-let mapleader=','
 
 " Stop highlighting search
 nnoremap <silent> <leader><space> :noh<CR>
