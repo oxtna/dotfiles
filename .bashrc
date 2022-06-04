@@ -144,6 +144,8 @@ alias lS='ls --color -1FSsh'
 # cd aliases
 alias cd..='cd ..'
 alias cd...='cd .. && cd ..'
+alias cd-='cd -'
+alias cd+='cd +'
 
 # python alias
 alias py='python3'
