@@ -33,23 +33,53 @@ set shiftwidth=4
 " Set leader key
 let mapleader=','
 
+" Source neovim's config file
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" Edit neovim's config file
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+" Grep operator
+" Thanks Steve Losh
+nnoremap <leader>g :set operatorfunc=<SID>GrepOperator<cr>g@
+vnoremap <leader>g :<c-u>call <SID>GrepOperator(visualmode())<cr>
+
+function! s:GrepOperator(type) abort
+    let unnamed_register = @@
+
+    try
+        if a:type ==# 'v'
+            normal! `<v`>y
+        elseif a:type ==# 'char'
+            normal! `[y`]
+        endif
+
+        silent execute "grep! -R " .. shellescape(@@) .. " ."
+        copen
+    finally
+        let @@ = unnamed_register
+    endtry
+endfunction
+
 " Surround mappings
-nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
-nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
-nnoremap <leader>` viw<esc>a`<esc>bi`<esc>lel
-nnoremap <leader>( viw<esc>a(<esc>bi)<esc>lel
-nnoremap <leader>[ viw<esc>a[<esc>bi]<esc>lel
+nnoremap <leader>" viW<esc>a"<esc>Bi"<esc>E
+nnoremap <leader>' viW<esc>a'<esc>Bi'<esc>E
+nnoremap <leader>` viW<esc>a`<esc>Bi`<esc>E
+nnoremap <leader>( viW<esc>a)<esc>Bi(<esc>E
+nnoremap <leader>[ viW<esc>a]<esc>Bi[<esc>E
 vnoremap <leader>" <esc>`<i"<esc>`>a"<esc>
 vnoremap <leader>' <esc>`<i'<esc>`>a'<esc>
 vnoremap <leader>` <esc>`<i`<esc>`>a`<esc>
 vnoremap <leader>( <esc>`<i(<esc>`>a)<esc>
 vnoremap <leader>[ <esc>`<i[<esc>`>a]<esc>
 
-" Ruby indentation rules
-autocmd FileType ruby setlocal shiftwidth
+augroup filetypes
+    " Ruby indentation rules
+    autocmd FileType ruby setlocal shiftwidth
 
-" JavaScript indentation rules
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+    " JavaScript indentation rules
+    autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+augroup END
 
 " Other sane defaults
 set cursorline
@@ -59,6 +89,7 @@ set noshowmode
 set backspace=indent,eol,start
 set noerrorbells visualbell t_vb=
 filetype plugin indent on
+nnoremap / /\v
 
 " Show invisible characters
 set list
@@ -78,6 +109,10 @@ set smartcase
 set incsearch
 set hlsearch
 set wildmenu
+
+" Window split settings
+set splitbelow
+set splitright
 
 " Stop highlighting search
 nnoremap <silent> <leader><space> :noh<CR>
@@ -219,7 +254,7 @@ local function modified()
   if vim.bo.modified then
     return '+'
   elseif vim.bo.modifiable == false or vim.bo.readonly == true then
-    return '-'
+    return '/'
   end
   return ''
 end
@@ -253,12 +288,6 @@ require('lualine').setup {
         '%w',
         cond = function()
           return vim.wo.previewwindow
-        end,
-      },
-      {
-        '%r',
-        cond = function()
-          return vim.bo.readonly
         end,
       },
       {
