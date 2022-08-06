@@ -54,18 +54,6 @@ set hlsearch
 " Set leader key
 let mapleader=','
 
-" Surround mappings
-nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
-nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
-nnoremap <leader>` viw<esc>a`<esc>bi`<esc>lel
-nnoremap <leader>( viw<esc>a(<esc>bi)<esc>lel
-nnoremap <leader>[ viw<esc>a[<esc>bi]<esc>lel
-vnoremap <leader>" <esc>`<i"<esc>`>a"<esc>
-vnoremap <leader>' <esc>`<i'<esc>`>a'<esc>
-vnoremap <leader>` <esc>`<i`<esc>`>a`<esc>
-vnoremap <leader>( <esc>`<i(<esc>`>a)<esc>
-vnoremap <leader>[ <esc>`<i[<esc>`>a]<esc>
-
 " Stop highlighting search
 nnoremap <silent> <leader><space> :noh<CR>
 
