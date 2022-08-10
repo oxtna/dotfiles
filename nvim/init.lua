@@ -11,6 +11,7 @@ vim.opt.scrolloff = 4
 vim.opt.sidescrolloff = 4
 vim.opt.list = true
 vim.opt.listchars = 'tab:>·,trail:·,nbsp:·'
+vim.opt.shortmess = vim.opt.shortmess + 'sS'
 
 -- Better line wrapping
 vim.opt.showbreak = ' ¬'
@@ -111,40 +112,44 @@ vim.api.nvim_set_keymap('v', '<leader>(', '<esc>`<i(<esc>`>la)<esc>',
 vim.api.nvim_set_keymap('v', '<leader>[', '<esc>`<i[<esc>`>la]<esc>',
   { noremap = true })
 
--- TODO: Grep operator
---[[
-" Grep operator
-" Thanks Steve Losh
-nnoremap <leader>g :set operatorfunc=<SID>GrepOperator<CR>g@
-vnoremap <leader>g :<C-u>call <SID>GrepOperator(visualmode())<CR>
+-- TODO: Convert this to Lua
+-- Grep operator
+-- Thanks, Steve Losh
+vim.api.nvim_exec([[
+function! GrepOperator(type) abort
+  let unnamed_register = @@
 
-function! s:GrepOperator(type) abort
-    let unnamed_register = @@
+  try
+    if a:type ==# 'v'
+      normal! `<v`>y
+    elseif a:type ==# 'char'
+      normal! `[y`]
+    endif
 
-    try
-        if a:type ==# 'v'
-            normal! `<v`>y
-        elseif a:type ==# 'char'
-            normal! `[y`]
-        endif
-
-        silent execute "grep! -R " .. shellescape(@@) .. " ."
-        copen
-    finally
-        let @@ = unnamed_register
-    endtry
+    silent execute "grep! -R " .. shellescape(@@) .. " ."
+    copen
+  finally
+    let @@ = unnamed_register
+  endtry
 endfunction
---]]
+]], false)
+vim.api.nvim_set_keymap('n', '<leader>g', ':set operatorfunc=GrepOperator<CR>g@',
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<leader>g', ':<C-u>call GrepOperator(visualmode())<CR>',
+  { noremap = true, silent = true })
 
 -- Packer
 require('plugins')
 
--- nvim-tree settings
-vim.g.nvim_tree_highlight_opened_files = 1
-vim.g.nvim_tree_add_trailing = 1
-vim.g.nvim_tree_symlink_arrow = ' -> '
-vim.g.nvim_tree_icon_padding = '  '
-vim.g.nvim_tree_special_files = { 'README.md', 'readme.md' }
+-- Colorscheme configuration
+require('nightfox').override.groups({
+  terafox = {
+    NonText = { fg = '#3be368' },
+    Whitespace = { fg = '#3be368' },
+  }
+})
+
+vim.cmd('colorscheme terafox')
 
 -- nvim-tree keymaps
 vim.api.nvim_set_keymap('n', '<F6>', ':NvimTreeRefresh<CR>:NvimTreeToggle<CR>',
@@ -152,39 +157,45 @@ vim.api.nvim_set_keymap('n', '<F6>', ':NvimTreeRefresh<CR>:NvimTreeToggle<CR>',
 vim.api.nvim_set_keymap('n', '<F7>', ':NvimTreeRefresh<CR>:NvimTreeFindFile<CR>',
   { noremap = true, silent = true })
 
--- Colorscheme setup
-local color_groups = {
-  NonText = { fg = '#3be368' },
-  Whitespace = { fg = '#3be368' }
-}
-require('nightfox').setup({ groups = color_groups })
-vim.cmd('colorscheme terafox')
-
 -- Initialize status bar
--- Thanks `shadmansaleh`
+-- Thanks, `shadmansaleh`
 local colors = {
-  red = '#ca1243',
-  grey = '#616266',
   black = '#383a42',
   white = '#f3f3f3',
-  violet = '#660965',
+  dark_teal = '#152528',
+  grey = '#616266',
   pink = '#d4649f',
+  red = '#ca1243',
   orange = '#fe8019',
   green = '#8ec07c',
   blue = '#5cc6db',
+  violet = '#660965',
 }
 
 local theme = {
   normal = {
-    a = { fg = colors.white, bg = colors.black },
+    a = { fg = colors.white, bg = colors.dark_teal },
     b = { fg = colors.white, bg = colors.grey },
-    c = { fg = colors.black, bg = colors.white },
+    c = { fg = colors.white, bg = colors.dark_teal },
+    x = { fg = colors.white, bg = colors.dark_teal },
     z = { fg = colors.white, bg = colors.black },
   },
-  insert = { a = { fg = colors.white, bg = colors.violet } },
-  visual = { a = { fg = colors.black, bg = colors.orange } },
-  replace = { a = { fg = colors.black, bg = colors.pink } },
-  command = { a = { fg = colors.black, bg = colors.blue } },
+  insert = {
+    a = { fg = colors.black, bg = colors.blue },
+    z = { fg = colors.black, bg = colors.blue },
+  },
+  visual = {
+    a = { fg = colors.black, bg = colors.orange },
+    z = { fg = colors.black, bg = colors.orange },
+  },
+  replace = {
+    a = { fg = colors.white, bg = colors.violet },
+    z = { fg = colors.white, bg = colors.violet },
+  },
+  command = {
+    a = { fg = colors.black, bg = colors.green },
+    z = { fg = colors.black, bg = colors.green },
+  },
 }
 
 local empty = require('lualine.component'):extend()
@@ -202,7 +213,7 @@ local function process_sections(sections)
     local left = name:sub(9, 10) < 'x'
     for pos = 1, name ~= 'lualine_z' and #section or #section - 1 do
       table.insert(section, pos * 2, {
-        empty, color = { fg = colors.white, bg = colors.white }
+        empty, color = { fg = colors.dark_teal, bg = colors.dark_teal }
       })
     end
     for id, comp in ipairs(section) do
@@ -210,7 +221,7 @@ local function process_sections(sections)
         comp = { comp }
         section[id] = comp
       end
-      comp.separator = left and { right = '' } or { left = '' }
+      comp.separator = left and { right = '' } or { left = '' }
     end
   end
   return sections
@@ -225,7 +236,11 @@ local function search_result()
     return ''
   end
   local searchcount = vim.fn.searchcount { maxcount = 9999 }
-  return last_search .. '(' .. searchcount.current .. '/' .. searchcount.total .. ')'
+  -- Skip the `very magic` characters
+  if last_search:sub(1, 2) == '\\v' then
+    last_search = last_search:sub(3, #last_search)
+  end
+  return ' ' .. last_search .. ' [' .. searchcount.current .. '/' .. searchcount.total .. ']'
 end
 
 local function modified()
@@ -237,14 +252,28 @@ local function modified()
   return ''
 end
 
-require('lualine').setup {
+-- Does not work during command input
+local function current_time()
+  return os.date('%X')
+end
+
+local function process_filename(filename)
+  
+end
+
+require('lualine').setup({
   options = {
     theme = theme,
     component_separators = '',
-    section_separators = { left = '', right = '' },
+    section_separators = '',
+    disabled_filetypes = {
+      statusline = { 'NvimTree' },
+    },
   },
-  sections = process_sections {
-    lualine_a = { 'mode' },
+  sections = process_sections({
+    lualine_a = {
+      'mode',
+    },
     lualine_b = {
       'branch',
       'diff',
@@ -279,10 +308,19 @@ require('lualine').setup {
     lualine_x = {},
     lualine_y = { search_result, 'filetype' },
     lualine_z = { '%l:%c', '%p%%/%L' },
-  },
-  inactive_sections = {
-    lualine_c = { '%f %y %m' },
+  }),
+  inactive_sections = process_sections({
+    lualine_a = {},
+    lualine_b = {
+      'branch',
+      'diff',
+      { 'filename', file_status = false, path = 1 },
+      { modified, color = { bg = colors.red } },
+    },
+    lualine_c = {},
     lualine_x = {},
-  },
-}
+    lualine_y = { 'filetype' },
+    lualine_z = { '%l:%c', '%p%%/%L' },
+  }),
+})
 
