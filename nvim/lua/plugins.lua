@@ -2,10 +2,7 @@ return require('packer').startup(function()
   -- Packer
   use 'wbthomason/packer.nvim'
 
-  -- Matchup
-  -- use 'andymass/vim-matchup'
-
-  -- Tree
+  -- Directory tree
   use {
     'kyazdani42/nvim-tree.lua',
     requires = { 'kyazdani42/nvim-web-devicons' },
@@ -28,7 +25,7 @@ return require('packer').startup(function()
     }) end
   }
 
-  -- Syntax Highlighting
+  -- Syntax highlighting
   use {
     'nvim-treesitter/nvim-treesitter',
     requires = { 'nvim-lua/plenary.nvim' },
@@ -44,13 +41,13 @@ return require('packer').startup(function()
   -- Color scheme
   use 'EdenEast/nightfox.nvim'
 
-  -- Tab bar
+  -- Buffer bar
   use {
     'romgrk/barbar.nvim',
     requires = { 'kyazdani42/nvim-web-devicons' }
   }
 
-  -- Status bar
+  -- Status line
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons' }
