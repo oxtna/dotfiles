@@ -157,6 +157,27 @@ vim.api.nvim_set_keymap('n', '<F6>', ':NvimTreeRefresh<CR>:NvimTreeToggle<CR>',
 vim.api.nvim_set_keymap('n', '<F7>', ':NvimTreeRefresh<CR>:NvimTreeFindFile<CR>',
   { noremap = true, silent = true })
 
+-- Better syntax highlighting
+require('nvim-treesitter.configs').setup({
+  ensure_installed = {
+    'lua',
+    'python',
+    'ruby',
+    'help',
+    'markdown',
+    'json',
+    'c',
+  },
+  sync_install = false,
+  auto_install = true,
+  ignore_install = {},
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+  indent = { enable = true },
+})
+
 -- Initialize status bar
 -- Thanks, `shadmansaleh`
 local colors = {
@@ -257,17 +278,13 @@ local function current_time()
   return os.date('%X')
 end
 
-local function process_filename(filename)
-  
-end
-
 require('lualine').setup({
   options = {
     theme = theme,
     component_separators = '',
     section_separators = '',
     disabled_filetypes = {
-      statusline = { 'NvimTree' },
+      statusline = { 'NvimTree', 'packer' },
     },
   },
   sections = process_sections({
