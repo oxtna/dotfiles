@@ -2,6 +2,11 @@ return require('packer').startup(function()
   -- Packer
   use 'wbthomason/packer.nvim'
 
+  -- LSP configs
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
+  use 'neovim/nvim-lspconfig'
+
   -- Directory tree
   use {
     'kyazdani42/nvim-tree.lua',
@@ -30,6 +35,19 @@ return require('packer').startup(function()
     'nvim-treesitter/nvim-treesitter',
     requires = { 'nvim-lua/plenary.nvim' },
     run = ':TSUpdate'
+  }
+
+  -- Fuzzy finder
+  use {
+    'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
+    requires = { 'nvim-lua/plenary.nvim' }
+  }
+
+  -- Telescope sorter
+  use {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    run = 'make'
   }
 
   -- Git integration

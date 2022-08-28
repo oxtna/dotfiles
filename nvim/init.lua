@@ -10,7 +10,7 @@ vim.opt.splitright = true
 vim.opt.scrolloff = 4
 vim.opt.sidescrolloff = 4
 vim.opt.list = true
-vim.opt.listchars = 'tab:>·,trail:·,nbsp:·'
+vim.opt.listchars = { tab = '>·', trail = '·', nbsp = '·' }
 vim.opt.shortmess = vim.opt.shortmess + 'sS'
 
 -- Better line wrapping
@@ -53,64 +53,31 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.g.mapleader = ','
 
 -- Always use 'very magic' searching
-vim.api.nvim_set_keymap('n', '/', '/\\v', { noremap = true })
+vim.keymap.set({ 'n', 'v' }, '/', '/\\v')
 
 -- Stop highlighting search results
-vim.api.nvim_set_keymap('n', '<leader><space>', ':noh<CR>',
-  { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v' }, '<leader><space>', '<Cmd>noh<CR>')
 
 -- Source and edit neovim's config file
-vim.api.nvim_set_keymap('n', '<leader>sv', ':source $MYVIMRC<CR>',
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>ev', ':vsplit $MYVIMRC<CR>',
-  { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>sv', '<Cmd>source $MYVIMRC<CR>')
+vim.keymap.set('n', '<leader>ev', '<Cmd>vsplit $MYVIMRC<CR>')
 
 -- Disable arrows in normal and visual modes
-vim.api.nvim_set_keymap('n', '<Left>', '', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Right>', '', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Up>', '', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Down>', '', { noremap = true })
-vim.api.nvim_set_keymap('v', '<Left>', '', { noremap = true })
-vim.api.nvim_set_keymap('v', '<Right>', '', { noremap = true })
-vim.api.nvim_set_keymap('v', '<Up>', '', { noremap = true })
-vim.api.nvim_set_keymap('v', '<Down>', '', { noremap = true })
+vim.keymap.set({ 'n', 'v' }, '<Left>', '')
+vim.keymap.set({ 'n', 'v' }, '<Right>', '')
+vim.keymap.set({ 'n', 'v' }, '<Up>', '')
+vim.keymap.set({ 'n', 'v' }, '<Down>', '')
 
 -- Window navigation
-vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h',
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j',
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k',
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l',
-  { noremap = true, silent = true })
+vim.keymap.set('n', '<C-h>', '<C-w>h')
+vim.keymap.set('n', '<C-j>', '<C-w>j')
+vim.keymap.set('n', '<C-k>', '<C-w>k')
+vim.keymap.set('n', '<C-l>', '<C-w>l')
 
 -- Buffer navigation
-vim.api.nvim_set_keymap('n', '<leader>z', ':bp<CR>',
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>x', ':bn<CR>',
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>c', ':bd<CR>',
-  { noremap = true, silent = true })
-
--- Surround keymaps
--- TODO: Fix `WORD,` behavior
-vim.api.nvim_set_keymap('n', '<leader>"', 'Ea"<esc>Bi"<esc>E',
-  { noremap = true })
-vim.api.nvim_set_keymap('n', "<leader>'", "Ea'<esc>Bi'<esc>E",
-  { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>(', 'Ea)<esc>Bi(<esc>E',
-  { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>[', 'Ea]<esc>Bi[<esc>E',
-  { noremap = true })
-vim.api.nvim_set_keymap('v', '<leader>"', '<esc>`<i"<esc>`>la"<esc>',
-  { noremap = true })
-vim.api.nvim_set_keymap('v', "<leader>'", "<esc>`<i'<esc>`>la'<esc>",
-  { noremap = true })
-vim.api.nvim_set_keymap('v', '<leader>(', '<esc>`<i(<esc>`>la)<esc>',
-  { noremap = true })
-vim.api.nvim_set_keymap('v', '<leader>[', '<esc>`<i[<esc>`>la]<esc>',
-  { noremap = true })
+vim.keymap.set('n', '<leader>z', '<Cmd>bp<CR>')
+vim.keymap.set('n', '<leader>x', '<Cmd>bn<CR>')
+vim.keymap.set('n', '<leader>c', '<Cmd>bd<CR>')
 
 -- TODO: Convert this to Lua
 -- Grep operator
@@ -141,6 +108,45 @@ vim.api.nvim_set_keymap('v', '<leader>g', ':<C-u>call GrepOperator(visualmode())
 -- Packer
 require('plugins')
 
+-- LSP setup
+require('mason').setup()
+require('mason-lspconfig').setup({
+  ensure_installed = { 'sumneko_lua', 'pyright' }
+})
+
+require('lspconfig').sumneko_lua.setup({
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim', 'use' }
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file('', true)
+      },
+    }
+  }
+})
+
+require('lspconfig').pyright.setup({})
+
+-- nvim-tree keymaps
+vim.keymap.set('n', '<F6>', '<Cmd>NvimTreeRefresh<CR><Cmd>NvimTreeToggle<CR>')
+vim.keymap.set('n', '<F7>', '<Cmd>NvimTreeRefresh<CR><Cmd>NvimTreeFindFile<CR>')
+
+-- Telescope settings and keymaps
+local telescope = require('telescope')
+telescope.setup({
+  defaults = {
+    prompt_prefix = '$ ',
+    selection_caret = '-> ',
+    entry_prefix = '• ',
+    path_display = { 'smart' },
+  }
+})
+telescope.load_extension('fzf')
+vim.keymap.set('n', '<leader>ff', '<Cmd>Telescope find_files<CR>')
+vim.keymap.set('n', '<leader>fg', '<Cmd>Telescope live_grep<CR>')
+
 -- Colorscheme configuration
 require('nightfox').override.groups({
   terafox = {
@@ -150,12 +156,6 @@ require('nightfox').override.groups({
 })
 
 vim.cmd('colorscheme terafox')
-
--- nvim-tree keymaps
-vim.api.nvim_set_keymap('n', '<F6>', ':NvimTreeRefresh<CR>:NvimTreeToggle<CR>',
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<F7>', ':NvimTreeRefresh<CR>:NvimTreeFindFile<CR>',
-  { noremap = true, silent = true })
 
 -- Better syntax highlighting
 require('nvim-treesitter.configs').setup({
@@ -169,7 +169,7 @@ require('nvim-treesitter.configs').setup({
     'c',
   },
   sync_install = false,
-  auto_install = true,
+  auto_install = false,
   ignore_install = {},
   highlight = {
     enable = true,
@@ -248,6 +248,8 @@ local function process_sections(sections)
   return sections
 end
 
+-- Make a nice search result string
+-- ` ABC [X/Y]`
 local function search_result()
   if vim.v.hlsearch == 0 then
     return ''
@@ -269,8 +271,9 @@ local function modified()
     return '+'
   elseif vim.bo.modifiable == false or vim.bo.readonly == true then
     return '/'
+  else
+    return ''
   end
-  return ''
 end
 
 -- Does not work during command input
@@ -308,18 +311,6 @@ require('lualine').setup({
       },
       { 'filename', file_status = false, path = 1 },
       { modified, color = { bg = colors.red } },
-      {
-        '%w',
-        cond = function()
-          return vim.wo.previewwindow
-        end,
-      },
-      {
-        '%q',
-        cond = function()
-          return vim.bo.buftype == 'quickfix'
-        end,
-      },
     },
     lualine_c = {},
     lualine_x = {},
