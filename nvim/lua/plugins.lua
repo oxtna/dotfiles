@@ -47,7 +47,11 @@ return require('packer').startup(function()
   -- Telescope sorter
   use {
     'nvim-telescope/telescope-fzf-native.nvim',
-    run = 'make'
+    run = '\z
+      cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && \z
+      cmake --build build --config Release && \z
+      cmake --install build --prefix build\z
+    '
   }
 
   -- Git integration
