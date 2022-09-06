@@ -13,6 +13,17 @@ vim.opt.list = true
 vim.opt.listchars = { tab = '>·', trail = '·', nbsp = '·' }
 vim.opt.shortmess = vim.opt.shortmess + 'sS'
 
+-- Use Powershell on Windows
+if vim.fn.has('win32') == 1 then
+  vim.opt.shell = vim.fn.executable('pwsh') and 'pwsh' or 'powershell'
+  vim.opt.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command \z
+    [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
+  vim.opt.shellredir = '-RedirectStandardOutput %s -NoNewWindow -Wait'
+  vim.opt.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+  vim.opt.shellquote = ''
+  vim.opt.shellxquote = ''
+end
+
 -- Better line wrapping
 vim.opt.showbreak = ' ¬'
 vim.opt.breakindent = true
@@ -78,32 +89,6 @@ vim.keymap.set('n', '<C-l>', '<C-w>l')
 vim.keymap.set('n', '<leader>z', '<Cmd>bp<CR>')
 vim.keymap.set('n', '<leader>x', '<Cmd>bn<CR>')
 vim.keymap.set('n', '<leader>c', '<Cmd>bd<CR>')
-
--- TODO: Convert this to Lua
--- Grep operator
--- Thanks, Steve Losh
-vim.api.nvim_exec([[
-function! GrepOperator(type) abort
-  let unnamed_register = @@
-
-  try
-    if a:type ==# 'v'
-      normal! `<v`>y
-    elseif a:type ==# 'char'
-      normal! `[y`]
-    endif
-
-    silent execute "grep! -R " .. shellescape(@@) .. " ."
-    copen
-  finally
-    let @@ = unnamed_register
-  endtry
-endfunction
-]], false)
-vim.api.nvim_set_keymap('n', '<leader>g', ':set operatorfunc=GrepOperator<CR>g@',
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<leader>g', ':<C-u>call GrepOperator(visualmode())<CR>',
-  { noremap = true, silent = true })
 
 -- Packer
 require('plugins')
