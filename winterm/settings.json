@@ -54,7 +54,7 @@
     "initialCols": 160,
     "initialPosition": "2000,",
     "initialRows": 36,
-    "language": "",
+    "language": null,
     "largePasteWarning": true,
     "launchMode": "focus",
     "minimizeToNotificationArea": true,
@@ -131,8 +131,11 @@
                 "source": "Windows.Terminal.VisualStudio"
             },
             {
+                "colorScheme": "Campbell",
+                "experimental.retroTerminalEffect": false,
                 "guid": "{5734f5b0-1a55-5f4f-9103-dd0d6ef3698d}",
                 "hidden": false,
+                "intenseTextStyle": "all",
                 "name": "Developer PowerShell for VS 2022",
                 "source": "Windows.Terminal.VisualStudio"
             },
@@ -445,7 +448,7 @@
     "showTerminalTitleInTitlebar": true,
     "snapToGridOnResize": true,
     "startOnUserLogin": true,
-    "startupActions": "",
+    "startupActions": null,
     "tabSwitcherMode": "inOrder",
     "tabWidthMode": "equal",
     "theme": "system",
