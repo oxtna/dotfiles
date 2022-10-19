@@ -1,9 +1,11 @@
 " Sanity
 set nocompatible
 
-" Set modeline
-set modeline
-set modelines=10
+" Dark mode
+set bg=dark
+
+" Disable modeline settings at the top of the file
+set nomodeline
 
 " File encoding
 set encoding=utf-8
@@ -14,9 +16,6 @@ syntax enable
 " Show current command while typing
 set showcmd
 
-" Enable the statusline
-set ruler
-
 " Turn off mode info because it's in the statusline
 set noshowmode
 
@@ -26,14 +25,14 @@ set scrolloff=4
 " Show next columns while scrolling
 set sidescrolloff=4
 
-" Highlight the line with the cursor
-set cursorline
-
 " Show line numbers
 set number
 
-" Show relative line numbers
+" Show line numbers relative to the current line
 set relativenumber
+
+" Set current line number colors and style
+hi CursorLineNr cterm=bold ctermfg=magenta ctermbg=black
 
 " Always show status line at the bottom, even if you have only one window open
 set laststatus=2
@@ -62,9 +61,6 @@ nmap Q <Nop>
 
 " Disable audible bell
 set noerrorbells visualbell t_vb=
-
-" Mouse support
-set mouse=a
 
 " Show hidden characters
 set list
@@ -123,22 +119,92 @@ set softtabstop=0
 " Insert 4 spaces on pressing tab
 set expandtab
 
+" Vimscript indentation rules
+autocmd FileType vim setlocal shiftwidth=2 tabstop=2
+
 " Ruby indentation rules
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
 
 " JavaScript indentation rules
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 
-" Plugins will be downloaded under the specified directory
-call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+let g:fullmodename = {
+  \ 'n' : 'NORMAL',
+  \ 'v' : 'VISUAL',
+  \ 'V' : 'V-LINE',
+  \ '' : 'V-BLOCK',
+  \ 'i' : 'INSERT',
+  \ 'R' : 'REPLACE',
+  \ 'c' : 'SEARCH'
+  \}
 
-" Declare the list of plugins
+let g:modecolor = {
+  \ 'n' : '%1*',
+  \ 'v' : '%2*',
+  \ 'V' : '%2*',
+  \ '' : '%2*',
+  \ 'i' : '%3*',
+  \ 'R' : '%4*',
+  \ 'c' : '%5*'
+  \}
+
+" Normal
+hi User1 ctermbg=black ctermfg=white
+" Visual
+hi User2 ctermbg=black ctermfg=darkyellow
+" Insert
+hi User3 ctermbg=black ctermfg=blue
+" Replace
+hi User4 ctermbg=black ctermfg=magenta
+" Command (Search)
+hi User5 ctermbg=black ctermfg=green
+" Filepath
+hi User6 ctermbg=black ctermfg=white
+" Search count
+hi User7 ctermbg=black ctermfg=darkgreen
+" Filetype
+hi User8 ctermbg=black ctermfg=gray
+" Filler
+hi User9 ctermbg=black ctermfg=white
+
+function! StatuslineMode()
+  return g:modecolor[mode()] . ' ' . g:fullmodename[mode()] . ' %9*'
+endfunction
+
+function! StatuslineFilepath()
+  let filepath = expand('%:t') !=# '' ? ( len(expand('%:p')) > 40 ? expand('%:t') : expand('%:p') ) : '[No Name]'
+  return '%6* ' . filepath . ' %9*'
+endfunction
+
+function! StatuslineModified()
+  return &modifiable ? ( &modified ? '%#error# + %9*' : '' ) : '%#error# / %9*'
+endfunction
+
+" TODO
+function! StatuslineSearchCount()
+  return '%7*%9*'
+endfunction
+
+function! StatuslineFiletype()
+  return '%8*%y%9*'
+endfunction
+
+function! StatuslinePosition()
+  return ' %l:%c  %P/%L '
+endfunction
+
+function! Statusline()
+  return StatuslineMode() . ' ' . StatuslineFilepath() . ' ' . StatuslineModified() . '%=' . StatuslineSearchCount() . ' ' . StatuslineFiletype() . ' ' . StatuslinePosition()
+endfunction
+
+set statusline=%!Statusline()
+
+" Plugins will be downloaded under `~/.vim/plugged`
+call plug#begin()
+
 Plug 'preservim/nerdtree'
-Plug 'itchyny/lightline.vim'
 Plug 'frazrepo/vim-rainbow'
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-surround'
-Plug 'altercation/vim-colors-solarized'
 
 " Plugins become visible to Vim after this call
 call plug#end()
@@ -151,43 +217,11 @@ nmap <F5>   :NERDTreeRefreshRoot<CR>
 let NERDTreeShowHidden = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
+let NERDTreeDirArrowExpandable = '>'
+let NERDTreeDirArrowCollapsible = 'v'
 let NERDTreeIgnore = [ '\.swp$' ]
-let NERDTreeWinSize = 60
+let NERDTreeWinSize = 30
 
 " vim-rainbow activation
 let g:rainbow_active = 1
-
-" solarized theme
-set background=dark
-let g:solarized_termtrans = 1
-colorscheme solarized
-
-" Set current line number colors and style
-hi CursorLineNr cterm=bold ctermfg=magenta ctermbg=black
-
-" Lightline format
-let g:lightline = {
-  \  'colorscheme': 'powerline',
-  \  'active': {
-  \    'left': [
-  \      [ 'mode', 'paste' ],
-  \      [ 'readonly', 'filepath' ]
-  \    ],
-  \    'right': [
-  \      [ 'lineinfo' ],
-  \      [ 'percent' ],
-  \      [ 'fileencoding' ],
-  \      [ 'filetype' ]
-  \    ]
-  \  },
-  \  'component_function': {
-  \    'filepath': 'LightlineFilepath'
-  \  }
-  \}
-
-function! LightlineFilepath()
-    let filepath = expand('%:t') !=# '' ? ( len(expand('%:p')) > 50 ? expand('%:t') : expand('%:p') ) : '[No Name]'
-    let modified = &modified ? ' +' : ''
-    return filepath . modified
-endfunction
 
