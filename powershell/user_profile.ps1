@@ -2,7 +2,7 @@
 New-Alias vim nvim
 New-Alias vi nvim
 New-Alias l Get-ChildItem
-New-Alias grep findstr
+New-Alias grep rg
 
 # Functions
 function cd... {
@@ -41,6 +41,10 @@ Set-PSReadLineOption -PredictionViewStyle InlineView
 Import-Module posh-git
 Import-Module oh-my-posh
 oh-my-posh init pwsh --config ~/.config/powershell/omp.json | Invoke-Expression
+
+# Node Version Manager
+Import-Module nvm
+Set-NodeVersion (Get-NodeVersions | Select-Object -First 1)
 
 # Disable Python virtual environment prompts
 $Env:VIRTUAL_ENV_DISABLE_PROMPT = 1
