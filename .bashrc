@@ -76,7 +76,7 @@ __prompt_command() {
         PS1+="${separator} \[\e[31m\]${exit_code} \[\e[0m\]"
     fi
     # If effective UID is 0 (user is root), `#`, otherwise `$`
-    PS1+="\[\e[97m\]\$ \[\e[0m\]"
+    PS1+="\[\e[97m\]\\$ \[\e[0m\]"
 }
 
 unset color_prompt force_color_prompt
