@@ -37,9 +37,10 @@ Import-Module PSReadLine
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
 Set-PSReadLineOption -PredictionViewStyle InlineView
 
-# Oh My Posh
+# Git integration
 Import-Module posh-git
-Import-Module oh-my-posh
+
+# Oh My Posh
 oh-my-posh init pwsh --config ~/.config/powershell/omp.json | Invoke-Expression
 
 # Node Version Manager

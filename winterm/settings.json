@@ -43,6 +43,7 @@
     "alwaysOnTop": true,
     "alwaysShowNotificationIcon": true,
     "alwaysShowTabs": true,
+    "autoHideWindow": false,
     "centerOnLaunch": true,
     "confirmCloseAllTabs": true,
     "copyFormatting": "none",
@@ -452,6 +453,7 @@
     "tabSwitcherMode": "inOrder",
     "tabWidthMode": "equal",
     "theme": "system",
+    "themes": [],
     "trimBlockSelection": false,
     "useAcrylicInTabRow": false,
     "windowingBehavior": "useNew"
