@@ -135,7 +135,7 @@ let g:fullmodename = {
   \ '' : 'V-BLOCK',
   \ 'i' : 'INSERT',
   \ 'R' : 'REPLACE',
-  \ 'c' : 'SEARCH'
+  \ 'c' : 'COMMAND'
   \}
 
 let g:modecolor = {

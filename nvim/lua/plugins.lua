@@ -2,6 +2,9 @@ return require('packer').startup(function()
   -- Packer
   use 'wbthomason/packer.nvim'
 
+  -- test
+  -- use 'oxtna/vshow.lua'
+
   -- LSP configs
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'

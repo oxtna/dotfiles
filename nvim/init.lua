@@ -133,10 +133,12 @@ vim.keymap.set('n', '<leader>ff', '<Cmd>Telescope find_files<CR>')
 vim.keymap.set('n', '<leader>fg', '<Cmd>Telescope live_grep<CR>')
 
 -- Colorscheme configuration
-require('nightfox').override.groups({
-  terafox = {
-    NonText = { fg = '#3be368' },
-    Whitespace = { fg = '#3be368' },
+require('nightfox').setup({
+  groups = {
+    terafox = {
+      NonText = { fg = '#3be368' },
+      Whitespace = { fg = '#3be368' },
+    }
   }
 })
 
