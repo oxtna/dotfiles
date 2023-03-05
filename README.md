@@ -1,6 +1,6 @@
 # My dotfiles
 
-There's not much to say about this to be honest.
+There's not much else to say about this to be honest.
 
 ## What do I use?
 
