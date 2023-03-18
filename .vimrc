@@ -67,7 +67,7 @@ set list
 set listchars=tab:\|·,trail:·,extends:>,precedes:<,nbsp:·
 
 " Better line wrapping
-set showbreak=\ ¬
+set showbreak=¬\ 
 set breakindent
 
 " Disable arrows in normal mode
@@ -203,8 +203,6 @@ set statusline=%!Statusline()
 call plug#begin()
 
 Plug 'preservim/nerdtree'
-Plug 'frazrepo/vim-rainbow'
-Plug 'airblade/vim-gitgutter'
 
 " Plugins become visible to Vim after this call
 call plug#end()
@@ -221,7 +219,4 @@ let NERDTreeDirArrowExpandable = '>'
 let NERDTreeDirArrowCollapsible = 'v'
 let NERDTreeIgnore = [ '\.swp$' ]
 let NERDTreeWinSize = 30
-
-" vim-rainbow activation
-let g:rainbow_active = 1
 
