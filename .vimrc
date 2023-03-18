@@ -198,25 +198,3 @@ function! Statusline()
 endfunction
 
 set statusline=%!Statusline()
-
-" Plugins will be downloaded under `~/.vim/plugged`
-call plug#begin()
-
-Plug 'preservim/nerdtree'
-
-" Plugins become visible to Vim after this call
-call plug#end()
-
-" Make NERDTree shortcuts
-nmap <F6>   :NERDTreeToggle<CR>
-nmap <F5>   :NERDTreeRefreshRoot<CR>
-
-" NERDTree settings
-let NERDTreeShowHidden = 1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-let NERDTreeDirArrowExpandable = '>'
-let NERDTreeDirArrowCollapsible = 'v'
-let NERDTreeIgnore = [ '\.swp$' ]
-let NERDTreeWinSize = 30
-
