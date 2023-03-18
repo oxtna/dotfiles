@@ -43,9 +43,5 @@ Import-Module posh-git
 # Oh My Posh
 oh-my-posh init pwsh --config ~/.config/powershell/omp.json | Invoke-Expression
 
-# Node Version Manager
-Import-Module nvm
-Set-NodeVersion (Get-NodeVersions | Select-Object -First 1)
-
 # Disable Python virtual environment prompts
 $Env:VIRTUAL_ENV_DISABLE_PROMPT = 1
