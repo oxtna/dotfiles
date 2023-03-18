@@ -94,8 +94,6 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -132,22 +130,6 @@ fi
 # set vim as the default text editor
 export EDITOR=vim
 export VISUAL=vim
-
-# ls aliases
-alias l='ls --color -F'
-alias ll='ls --color -lFAh'
-alias la='ls --color -aF'
-alias lr='ls --color -lFARh'
-alias lt='ls --color -ltFAh'
-alias lS='ls --color -1FSsh'
-
-# cd aliases
-alias cd..='cd ..'
-alias cd...='cd .. && cd ..'
-alias cd-='cd -'
-
-# python alias
-alias py='python3'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
