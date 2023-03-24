@@ -1,6 +1,6 @@
 BasedOnStyle: LLVM
 Language: Cpp
-ColumnLimit: 80
+ColumnLimit: 90
 IndentWidth: 4
 UseTab: Never
 PointerAlignment: Left
