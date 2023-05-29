@@ -14,7 +14,7 @@ vim.opt.listchars = { tab = '>·', trail = '·', nbsp = '·' }
 vim.opt.shortmess = vim.opt.shortmess + 'sS'
 
 -- Use Powershell on Windows
-if vim.fn.has('win32') == 1 then
+if vim.loop.os_uname().sysname == 'Windows_NT' then
   vim.opt.shell = vim.fn.executable('pwsh') and 'pwsh' or 'powershell'
   vim.opt.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command \z
     [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
@@ -95,11 +95,14 @@ require('plugins')
 
 -- LSP setup
 require('mason').setup()
+
+local lsps = { 'lua_ls' }
+
 require('mason-lspconfig').setup({
-  ensure_installed = { 'sumneko_lua', 'pyright' }
+  ensure_installed = lsps
 })
 
-require('lspconfig').sumneko_lua.setup({
+require('lspconfig').lua_ls.setup({
   settings = {
     Lua = {
       diagnostics = {
@@ -111,8 +114,6 @@ require('lspconfig').sumneko_lua.setup({
     }
   }
 })
-
-require('lspconfig').pyright.setup({})
 
 -- nvim-tree keymaps
 vim.keymap.set('n', '<F6>', '<Cmd>NvimTreeRefresh<CR><Cmd>NvimTreeToggle<CR>')
