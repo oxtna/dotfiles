@@ -93,6 +93,8 @@ vim.keymap.set('n', '<leader>c', '<Cmd>bd<CR>')
 -- Packer
 require('plugins')
 
+-- This block somehow executes `42c` after loading everything
+--[[
 -- LSP setup
 require('mason').setup()
 
@@ -105,15 +107,22 @@ require('mason-lspconfig').setup({
 require('lspconfig').lua_ls.setup({
   settings = {
     Lua = {
+      runtime = {
+        version = 'LuaJIT'
+      },
       diagnostics = {
-        globals = { 'vim', 'use' }
+        globals = { 'vim' }
       },
       workspace = {
         library = vim.api.nvim_get_runtime_file('', true)
       },
+      telemetry = {
+        enable = false
+      },
     }
   }
 })
+--]]
 
 -- nvim-tree keymaps
 vim.keymap.set('n', '<F6>', '<Cmd>NvimTreeRefresh<CR><Cmd>NvimTreeToggle<CR>')
@@ -262,11 +271,6 @@ local function modified()
   else
     return ''
   end
-end
-
--- Does not work during command input
-local function current_time()
-  return os.date('%X')
 end
 
 require('lualine').setup({
