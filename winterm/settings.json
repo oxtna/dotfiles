@@ -444,7 +444,7 @@
   "showTerminalTitleInTitlebar": true,
   "snapToGridOnResize": true,
   "startOnUserLogin": true,
-  "startupActions": null,
+  "startupActions": "",
   "tabSwitcherMode": "inOrder",
   "tabWidthMode": "equal",
   "theme": "system",
