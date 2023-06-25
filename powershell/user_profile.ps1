@@ -45,3 +45,6 @@ oh-my-posh init pwsh --config ~/.config/powershell/omp.json | Invoke-Expression
 
 # Disable Python virtual environment prompts
 $Env:VIRTUAL_ENV_DISABLE_PROMPT = 1
+
+# Change the awful default coloring
+$PSStyle.FileInfo.Directory = "`e[95;1m"
