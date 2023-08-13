@@ -93,37 +93,6 @@ vim.keymap.set('n', '<leader>c', '<Cmd>bd<CR>')
 -- Packer
 require('plugins')
 
--- This block somehow executes `42c` after loading everything
---[[
--- LSP setup
-require('mason').setup()
-
-local lsps = { 'lua_ls' }
-
-require('mason-lspconfig').setup({
-  ensure_installed = lsps
-})
-
-require('lspconfig').lua_ls.setup({
-  settings = {
-    Lua = {
-      runtime = {
-        version = 'LuaJIT'
-      },
-      diagnostics = {
-        globals = { 'vim' }
-      },
-      workspace = {
-        library = vim.api.nvim_get_runtime_file('', true)
-      },
-      telemetry = {
-        enable = false
-      },
-    }
-  }
-})
---]]
-
 -- nvim-tree keymaps
 vim.keymap.set('n', '<F6>', '<Cmd>NvimTreeRefresh<CR><Cmd>NvimTreeToggle<CR>')
 vim.keymap.set('n', '<F7>', '<Cmd>NvimTreeRefresh<CR><Cmd>NvimTreeFindFile<CR>')
@@ -142,24 +111,13 @@ telescope.load_extension('fzf')
 vim.keymap.set('n', '<leader>ff', '<Cmd>Telescope find_files<CR>')
 vim.keymap.set('n', '<leader>fg', '<Cmd>Telescope live_grep<CR>')
 
--- Colorscheme configuration
-require('nightfox').setup({
-  groups = {
-    terafox = {
-      NonText = { fg = '#3be368' },
-      Whitespace = { fg = '#3be368' },
-    }
-  }
-})
-
-vim.cmd('colorscheme terafox')
-
 -- Better syntax highlighting
 require('nvim-treesitter.configs').setup({
   ensure_installed = {
     'lua',
     'python',
     'ruby',
+    'vim',
     'help',
     'markdown',
     'json',

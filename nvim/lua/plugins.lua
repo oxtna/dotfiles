@@ -2,12 +2,7 @@ return require('packer').startup(function()
   -- Packer
   use 'wbthomason/packer.nvim'
 
-  -- test
-  -- use 'oxtna/vshow.lua'
-
   -- LSP configs
-  use 'williamboman/mason.nvim'
-  use 'williamboman/mason-lspconfig.nvim'
   use 'neovim/nvim-lspconfig'
 
   -- Directory tree
@@ -63,22 +58,10 @@ return require('packer').startup(function()
     config = function() require('gitsigns').setup() end
   }
 
-  -- Color scheme
-  use 'EdenEast/nightfox.nvim'
-
-  -- Buffer bar
-  use {
-    'romgrk/barbar.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' }
-  }
-
   -- Status line
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons' }
   }
-
-  -- Discord Rich Presence
-  use 'andweeb/presence.nvim'
 end)
 
