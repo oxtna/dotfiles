@@ -5,6 +5,9 @@ return require('packer').startup(function()
   -- LSP configs
   use 'neovim/nvim-lspconfig'
 
+  -- Colorscheme
+  use 'folke/tokyonight.nvim'
+
   -- Directory tree
   use {
     'kyazdani42/nvim-tree.lua',

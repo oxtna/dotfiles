@@ -93,6 +93,16 @@ vim.keymap.set('n', '<leader>c', '<Cmd>bd<CR>')
 -- Packer
 require('plugins')
 
+-- Colorscheme
+require('tokyonight').setup({
+  style = 'night',
+  styles = {
+    sidebars = 'dark',
+    floats = 'dark',
+  },
+})
+vim.cmd[[colorscheme tokyonight-night]]
+
 -- nvim-tree keymaps
 vim.keymap.set('n', '<F6>', '<Cmd>NvimTreeRefresh<CR><Cmd>NvimTreeToggle<CR>')
 vim.keymap.set('n', '<F7>', '<Cmd>NvimTreeRefresh<CR><Cmd>NvimTreeFindFile<CR>')
@@ -232,7 +242,7 @@ end
 
 require('lualine').setup({
   options = {
-    theme = theme,
+    theme = 'tokyonight',
     component_separators = '',
     section_separators = '',
     disabled_filetypes = {
@@ -259,7 +269,7 @@ require('lualine').setup({
         diagnostics_color = { warn = { bg = colors.orange, fg = colors.white } },
       },
       { 'filename', file_status = false, path = 1 },
-      { modified, color = { bg = colors.red } },
+      { modified, color = { bg = colors.red, fg = colors.white } },
     },
     lualine_c = {},
     lualine_x = {},
