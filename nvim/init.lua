@@ -115,7 +115,6 @@ vim.keymap.set('n', '<leader>fg', '<Cmd>Telescope live_grep<CR>')
 require('nvim-treesitter.configs').setup({
   ensure_installed = {
     'lua',
-    'python',
     'ruby',
     'vim',
     'vimdoc',
