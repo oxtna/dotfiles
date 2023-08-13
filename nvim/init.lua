@@ -118,7 +118,7 @@ require('nvim-treesitter.configs').setup({
     'python',
     'ruby',
     'vim',
-    'help',
+    'vimdoc',
     'markdown',
     'json',
     'c',
