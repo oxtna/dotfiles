@@ -167,6 +167,13 @@
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": true,
                 "name": "Windows PowerShell"
+            },
+            {
+                "guid": "{bc2da056-dd06-5879-b969-1dfcefc8d2c7}",
+                "hidden": false,
+                "icon": "C:\\Users\\rafal\\Documents\\win-terminal\\tumbleweed-icon.png",
+                "name": "openSUSE-Tumbleweed",
+                "source": "Windows.Terminal.Wsl"
             }
         ]
     },
