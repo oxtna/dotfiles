@@ -61,6 +61,8 @@ export VISUAL="nvim"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 alias cd...='cd ../..'
 alias cd....='cd ../../..'
 alias cd-='cd -'
@@ -73,5 +75,3 @@ alias lr='ls --color=auto -FAR'
 alias lt='ls --color=auto -ltFAh'
 alias lS='ls --color=auto -1FSs'
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
