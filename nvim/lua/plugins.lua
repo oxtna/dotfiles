@@ -66,5 +66,8 @@ return require('packer').startup(function()
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons' }
   }
+
+  -- Tabline
+  use 'nanozuki/tabby.nvim'
 end)
 

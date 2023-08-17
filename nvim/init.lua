@@ -1,5 +1,6 @@
 -- Sane defaults
 vim.opt.showmode = false
+vim.opt.showtabline = 2
 vim.opt.cursorline = true
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -63,8 +64,11 @@ vim.api.nvim_create_autocmd('FileType', {
 
 vim.g.mapleader = ','
 
+-- Disabled, while I figure out to make this less annoying for special characters
+--[[
 -- Always use 'very magic' searching
 vim.keymap.set({ 'n', 'v' }, '/', '/\\v')
+--]]
 
 -- Stop highlighting search results
 vim.keymap.set({ 'n', 'v' }, '<leader><space>', '<Cmd>noh<CR>')
@@ -102,6 +106,8 @@ require('tokyonight').setup({
   },
 })
 vim.cmd[[colorscheme tokyonight-night]]
+vim.api.nvim_set_hl(0, 'NonText', { fg = '#8917e6' })
+vim.api.nvim_set_hl(0, 'Whitespace', { fg = '#469494' })
 
 -- nvim-tree keymaps
 vim.keymap.set('n', '<F6>', '<Cmd>NvimTreeRefresh<CR><Cmd>NvimTreeToggle<CR>')
@@ -141,6 +147,51 @@ require('nvim-treesitter.configs').setup({
   },
   indent = { enable = true },
 })
+
+local theme = {
+  fill = 'TabLineFill',
+  head = 'TabLine',
+  current_tab = 'TabLineSel',
+  tab = 'TabLine',
+  win = 'TabLine',
+  tail = 'TabLine',
+}
+require('tabby.tabline').set(function(line)
+  return {
+    {
+      { '%%', hl = theme.head },
+      line.sep('$', theme.head, theme.fill),
+    },
+    line.tabs().foreach(function(tab)
+      local hl = tab.is_current() and theme.current_tab or theme.tab
+      return {
+        line.sep('^', hl, theme.fill),
+        tab.is_current() and 'A' or 'N',
+        tab.number(),
+        tab.name(),
+        line.sep('$', hl, theme.fill),
+        hl = hl,
+        margin = ' ',
+      }
+    end),
+    line.spacer(),
+    line.wins_in_tab(line.api.get_current_tab()).foreach(function(win)
+      return {
+        line.sep('^', theme.win, theme.fill),
+        win.is_current() and 'A' or 'N',
+        win.buf_name(),
+        line.sep('$', theme.win, theme.fill),
+        hl = theme.fill,
+        margin = ' ',
+      }
+    end),
+    {
+      line.sep('^', theme.tail, theme.fill),
+      { '!@!', hl = theme.tail },
+    },
+    hl = theme.fill,
+  }
+end)
 
 -- Initialize status bar
 -- Thanks, `shadmansaleh`
