@@ -282,7 +282,7 @@ require('lualine').setup({
       'branch',
       'diff',
       { 'filename', file_status = false, path = 1 },
-      { modified, color = { bg = colors.red } },
+      modified,
     },
     lualine_c = {},
     lualine_x = {},
