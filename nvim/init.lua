@@ -127,6 +127,25 @@ telescope.load_extension('fzf')
 vim.keymap.set('n', '<leader>ff', '<Cmd>Telescope find_files<CR>')
 vim.keymap.set('n', '<leader>fg', '<Cmd>Telescope live_grep<CR>')
 
+-- LSP
+local lspconfig = require('lspconfig')
+lspconfig.lua_ls.setup({
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        globals = { 'vim' },
+      },
+      workspace = {
+        library = { vim.env.VIMRUNTIME },
+      },
+    },
+  },
+})
+lspconfig.clangd.setup({})
+
 -- Better syntax highlighting
 require('nvim-treesitter.configs').setup({
   ensure_installed = {
