@@ -159,35 +159,35 @@ local theme = {
 require('tabby.tabline').set(function(line)
   return {
     {
-      { '%%', hl = theme.head },
-      line.sep('$', theme.head, theme.fill),
+      { ' 󰣎 󰣏 󰣑 󰣐 ', hl = theme.head },
     },
     line.tabs().foreach(function(tab)
-      local hl = tab.is_current() and theme.current_tab or theme.tab
+      local sep_color = tab.is_current() and theme.current_tab or theme.tab
+      local suits_filled = { '󰣎 ', '󰣏 ', '󰣑 ', '󰣐 ' }
+      local suits_outline = { '󱢟 ', '󱀝 ', '󱢲 ', '󱢠 ' }
+      local suit_index = tab.number() % 4 == 0 and 4 or tab.number() % 4
       return {
-        line.sep('^', hl, theme.fill),
-        tab.is_current() and 'A' or 'N',
+        line.sep(' ', sep_color, theme.fill),
+        tab.is_current() and suits_filled[suit_index] or suits_outline[suit_index],
         tab.number(),
         tab.name(),
-        line.sep('$', hl, theme.fill),
-        hl = hl,
+        hl = theme.fill,
         margin = ' ',
       }
     end),
     line.spacer(),
     line.wins_in_tab(line.api.get_current_tab()).foreach(function(win)
+      local sep_color = win.is_current() and theme.current_tab or theme.win
       return {
-        line.sep('^', theme.win, theme.fill),
-        win.is_current() and 'A' or 'N',
+        line.sep('  ', sep_color, theme.fill),
+        win.is_current() and '󰘸 ' or '󰘹 ',
         win.buf_name(),
-        line.sep('$', theme.win, theme.fill),
         hl = theme.fill,
         margin = ' ',
       }
     end),
     {
-      line.sep('^', theme.tail, theme.fill),
-      { '!@!', hl = theme.tail },
+      { '     ', hl = theme.tail },
     },
     hl = theme.fill,
   }
