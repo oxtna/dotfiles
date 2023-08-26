@@ -13,7 +13,7 @@ AlignConsecutiveMacros: AcrossEmptyLinesAndComments
 AlignEscapedNewlines: Left
 AlignAfterOpenBracket: AlwaysBreak
 AlignTrailingComments: true
-AlignAllArgumentsOnNextLine: true
+AllowAllArgumentsOnNextLine: true
 AllowShortFunctionsOnASingleLine: InlineOnly
 AllowShortBlocksOnASingleLine: Empty
 AllowShortCaseLabelsOnASingleLine: false
@@ -28,7 +28,7 @@ SpaceBeforeCtorInitializerColon: true
 SpaceBeforeInheritanceColon: true
 SpaceBeforeRangeBasedForLoopColon: true
 BinPackArguments: false
-BitFieldColonSpaing: Both
+BitFieldColonSpacing: Both
 
 BreakBeforeBraces: Custom
 BraceWrapping:
