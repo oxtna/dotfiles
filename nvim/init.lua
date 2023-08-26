@@ -55,20 +55,18 @@ vim.cmd('cnoreabbrev WQ wq')
 vim.cmd('cnoreabbrev Wa wa')
 vim.cmd('cnoreabbrev WA wa')
 
-local ft_augroup = vim.api.nvim_create_augroup('ft', { clear = true })
 vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('MyFileType', { clear = true }),
   pattern = { 'ruby', 'javascript', 'lua' },
   command = 'setlocal shiftwidth=2 tabstop=2',
-  group = ft_augroup
 })
-
-vim.g.mapleader = ','
 
 -- Disabled, while I figure out to make this less annoying for special characters
 --[[
 -- Always use 'very magic' searching
 vim.keymap.set({ 'n', 'v' }, '/', '/\\v')
 --]]
+vim.g.mapleader = ','
 
 -- Stop highlighting search results
 vim.keymap.set({ 'n', 'v' }, '<leader><space>', '<Cmd>noh<CR>')
@@ -94,6 +92,16 @@ vim.keymap.set('n', '<leader>z', '<Cmd>bp<CR>')
 vim.keymap.set('n', '<leader>x', '<Cmd>bn<CR>')
 vim.keymap.set('n', '<leader>c', '<Cmd>bd<CR>')
 
+-- File formatting
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('MyLspAttach', { clear = true }),
+  callback = function()
+    vim.keymap.set('n', '<leader>d', function()
+      vim.lsp.buf.format({ async = true })
+    end)
+  end,
+})
+
 -- Packer
 require('plugins')
 
@@ -105,7 +113,7 @@ require('tokyonight').setup({
     floats = 'dark',
   },
 })
-vim.cmd[[colorscheme tokyonight-night]]
+vim.cmd [[colorscheme tokyonight-night]]
 vim.api.nvim_set_hl(0, 'NonText', { fg = '#8917e6' })
 vim.api.nvim_set_hl(0, 'Whitespace', { fg = '#469494' })
 
@@ -338,8 +346,8 @@ require('lualine').setup({
         sections = { 'warn' },
         diagnostics_color = { warn = { bg = colors.orange, fg = colors.white } },
       },
-      { 'filename', file_status = false, path = 1 },
-      { modified, color = { bg = colors.red, fg = colors.white } },
+      { 'filename', file_status = false,                           path = 1 },
+      { modified,   color = { bg = colors.red, fg = colors.white } },
     },
     lualine_c = {},
     lualine_x = {},
@@ -360,4 +368,3 @@ require('lualine').setup({
     lualine_z = { '%l:%c', '%p%%/%L' },
   }),
 })
-
