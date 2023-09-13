@@ -137,7 +137,7 @@
                 "source": "Windows.Terminal.VisualStudio"
             },
             {
-                "colorScheme": "Campbell",
+                "colorScheme": "Campbell Powershell",
                 "experimental.retroTerminalEffect": false,
                 "guid": "{5734f5b0-1a55-5f4f-9103-dd0d6ef3698d}",
                 "hidden": false,
@@ -169,10 +169,11 @@
                 "name": "Windows PowerShell"
             },
             {
+                "colorScheme": "Tokyo Night",
                 "guid": "{bc2da056-dd06-5879-b969-1dfcefc8d2c7}",
                 "hidden": false,
                 "icon": "C:\\Users\\rafal\\Documents\\win-terminal\\tumbleweed-icon.png",
-                "name": "openSUSE-Tumbleweed",
+                "name": "openSUSE Tumbleweed",
                 "source": "Windows.Terminal.Wsl"
             }
         ]
@@ -362,6 +363,29 @@
             "selectionBackground": "#FFFFFF",
             "white": "#D3D7CF",
             "yellow": "#C4A000"
+        },
+        {
+            "background": "#1A1B2C",
+            "black": "#414868",
+            "blue": "#7AA2F7",
+            "brightBlack": "#414868",
+            "brightBlue": "#7AA2F7",
+            "brightCyan": "#7DCFFF",
+            "brightGreen": "#73DACA",
+            "brightPurple": "#BB9AF7",
+            "brightRed": "#F7768E",
+            "brightWhite": "#C0CAF5",
+            "brightYellow": "#E0AF68",
+            "cursorColor": "#C0CAF5",
+            "cyan": "#7DCFFF",
+            "foreground": "#A9B1DC",
+            "green": "#73DACA",
+            "name": "Tokyo Night",
+            "purple": "#BB9AF7",
+            "red": "#F7768E",
+            "selectionBackground": "#28344A",
+            "white": "#C0CAF5",
+            "yellow": "#E0AF68"
         },
         {
             "background": "#300A24",
