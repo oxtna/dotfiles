@@ -80,7 +80,7 @@
             "cursorShape": "vintage",
             "font": 
             {
-                "face": "CodeNewRoman NF",
+                "face": "CodeNewRoman Nerd Font Propo",
                 "size": 12.0
             },
             "historySize": 9001,
@@ -109,22 +109,6 @@
                 "tabTitle": "PowerShell Core"
             },
             {
-                "colorScheme": "solar dark",
-                "cursorShape": "filledBox",
-                "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
-                "hidden": false,
-                "name": "Ubuntu",
-                "opacity": 90,
-                "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc",
-                "tabTitle": "Ubuntu"
-            },
-            {
-                "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-                "hidden": true,
-                "name": "WSL",
-                "source": "Windows.Terminal.Wsl"
-            },
-            {
                 "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
                 "hidden": true,
                 "name": "Azure Cloud Shell",
@@ -137,7 +121,7 @@
                 "source": "Windows.Terminal.VisualStudio"
             },
             {
-                "colorScheme": "Campbell",
+                "colorScheme": "Campbell Powershell",
                 "experimental.retroTerminalEffect": false,
                 "guid": "{5734f5b0-1a55-5f4f-9103-dd0d6ef3698d}",
                 "hidden": false,
@@ -169,10 +153,11 @@
                 "name": "Windows PowerShell"
             },
             {
+                "colorScheme": "Tokyo Night",
                 "guid": "{bc2da056-dd06-5879-b969-1dfcefc8d2c7}",
                 "hidden": false,
                 "icon": "C:\\Users\\rafal\\Documents\\win-terminal\\tumbleweed-icon.png",
-                "name": "openSUSE-Tumbleweed",
+                "name": "openSUSE Tumbleweed",
                 "source": "Windows.Terminal.Wsl"
             }
         ]
@@ -364,6 +349,29 @@
             "yellow": "#C4A000"
         },
         {
+            "background": "#1A1B2C",
+            "black": "#414868",
+            "blue": "#7AA2F7",
+            "brightBlack": "#414868",
+            "brightBlue": "#7AA2F7",
+            "brightCyan": "#7DCFFF",
+            "brightGreen": "#73DACA",
+            "brightPurple": "#BB9AF7",
+            "brightRed": "#F7768E",
+            "brightWhite": "#C0CAF5",
+            "brightYellow": "#E0AF68",
+            "cursorColor": "#C0CAF5",
+            "cyan": "#7DCFFF",
+            "foreground": "#A9B1DC",
+            "green": "#73DACA",
+            "name": "Tokyo Night",
+            "purple": "#BB9AF7",
+            "red": "#F7768E",
+            "selectionBackground": "#28344A",
+            "white": "#C0CAF5",
+            "yellow": "#E0AF68"
+        },
+        {
             "background": "#300A24",
             "black": "#171421",
             "blue": "#0037DA",
@@ -460,12 +468,56 @@
     "showTabsInTitlebar": true,
     "showTerminalTitleInTitlebar": true,
     "snapToGridOnResize": true,
-    "startOnUserLogin": true,
+    "startOnUserLogin": false,
     "startupActions": null,
     "tabSwitcherMode": "inOrder",
     "tabWidthMode": "equal",
     "theme": "system",
-    "themes": [],
+    "themes": 
+    [
+        {
+            "name": "legacyDark",
+            "tab": 
+            {
+                "background": null,
+                "showCloseButton": "always",
+                "unfocusedBackground": null
+            },
+            "window": 
+            {
+                "applicationTheme": "dark",
+                "useMica": false
+            }
+        },
+        {
+            "name": "legacyLight",
+            "tab": 
+            {
+                "background": null,
+                "showCloseButton": "always",
+                "unfocusedBackground": null
+            },
+            "window": 
+            {
+                "applicationTheme": "light",
+                "useMica": false
+            }
+        },
+        {
+            "name": "legacySystem",
+            "tab": 
+            {
+                "background": null,
+                "showCloseButton": "always",
+                "unfocusedBackground": null
+            },
+            "window": 
+            {
+                "applicationTheme": "system",
+                "useMica": false
+            }
+        }
+    ],
     "trimBlockSelection": false,
     "useAcrylicInTabRow": false,
     "windowingBehavior": "useNew"
