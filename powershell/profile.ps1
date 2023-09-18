@@ -41,7 +41,7 @@ Set-PSReadLineOption -PredictionViewStyle InlineView
 Import-Module posh-git
 
 # Oh My Posh
-oh-my-posh init pwsh --config ~/.config/powershell/omp.json | Invoke-Expression
+oh-my-posh init pwsh --config ~/Documents/PowerShell/omp.json | Invoke-Expression
 
 # Disable Python virtual environment prompts
 $Env:VIRTUAL_ENV_DISABLE_PROMPT = 1
