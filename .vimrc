@@ -50,6 +50,9 @@ set incsearch
 " Highlight during searching
 set hlsearch
 
+" Show search match count
+set shortmess-=S
+
 " Set leader key
 let mapleader=','
 
@@ -156,12 +159,10 @@ hi User2 ctermbg=black ctermfg=darkyellow
 hi User3 ctermbg=black ctermfg=blue
 " Replace
 hi User4 ctermbg=black ctermfg=magenta
-" Command (Search)
+" Command & Search
 hi User5 ctermbg=black ctermfg=green
 " Filepath
 hi User6 ctermbg=black ctermfg=white
-" Search count
-hi User7 ctermbg=black ctermfg=darkgreen
 " Filetype
 hi User8 ctermbg=black ctermfg=gray
 " Filler
@@ -172,17 +173,18 @@ function! StatuslineMode()
 endfunction
 
 function! StatuslineFilepath()
+  if win_getid() != g:statusline_winid
+    return ''
+  endif
   let filepath = expand('%:t') !=# '' ? ( len(expand('%:p')) > 40 ? expand('%:t') : expand('%:p') ) : '[No Name]'
   return '%6* ' . filepath . ' %9*'
 endfunction
 
 function! StatuslineModified()
+  if win_getid() != g:statusline_winid
+    return ''
+  endif
   return &modifiable ? ( &modified ? '%#error# + %9*' : '' ) : '%#error# / %9*'
-endfunction
-
-" TODO
-function! StatuslineSearchCount()
-  return '%7*%9*'
 endfunction
 
 function! StatuslineFiletype()
@@ -194,7 +196,7 @@ function! StatuslinePosition()
 endfunction
 
 function! Statusline()
-  return StatuslineMode() . ' ' . StatuslineFilepath() . ' ' . StatuslineModified() . '%=' . StatuslineSearchCount() . ' ' . StatuslineFiletype() . ' ' . StatuslinePosition()
+  return StatuslineMode() . ' ' . StatuslineFilepath() . ' ' . StatuslineModified() . '%=' . ' ' . StatuslineFiletype() . ' ' . StatuslinePosition()
 endfunction
 
 set statusline=%!Statusline()
