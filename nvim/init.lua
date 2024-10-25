@@ -44,12 +44,6 @@ vim.cmd('cnoreabbrev WQ wq')
 vim.cmd('cnoreabbrev Wa wa')
 vim.cmd('cnoreabbrev WA wa')
 
-vim.api.nvim_create_autocmd('FileType', {
-  group = vim.api.nvim_create_augroup('MyFileType', { clear = true }),
-  pattern = { 'lua' },
-  command = 'setlocal shiftwidth=2 tabstop=2',
-})
-
 -- Disabled, while I figure out to make this less annoying for special characters
 --[[
 -- Always use 'very magic' searching
@@ -81,18 +75,48 @@ vim.keymap.set('n', '<leader>z', '<Cmd>bp<CR>')
 vim.keymap.set('n', '<leader>x', '<Cmd>bn<CR>')
 vim.keymap.set('n', '<leader>c', '<Cmd>bd<CR>')
 
+-- Tab navigation
+vim.keymap.set({ 'n', 'v' }, 'gt', '')
+vim.keymap.set({ 'n', 'v' }, 'gT', '')
+vim.keymap.set('n', '<leader>tn', '<Cmd>tabnew<CR>', { desc = 'Open new tab' })
+vim.keymap.set('n', '<leader>tz', '<Cmd>tabprevious<CR>', { desc = 'Previous tab' })
+vim.keymap.set('n', '<leader>tx', '<Cmd>tabnext<CR>', { desc = 'Next tab' })
+vim.keymap.set('n', '<leader>tc', '<Cmd>tabclose<CR>', { desc = 'Close tab' })
+
 -- File formatting
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('MyLspAttach', { clear = true }),
+local function clang_format_buffer()
+  if vim.bo.readonly then
+    return
+  end
+  local content = table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), '\n')
+  local result = vim.fn.system('clang-format', content)
+  if vim.v.shell_error ~= 0 then
+    return
+  end
+  vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.split(result, '\n', { plain = true }))
+end
+
+vim.api.nvim_create_augroup('MyFileType', { clear = true })
+
+vim.api.nvim_create_autocmd('FileType', {
+  group = 'MyFileType',
+  pattern = 'lua',
   callback = function()
-    vim.keymap.set('n', '<leader>d', function()
-      vim.lsp.buf.format({ async = true })
-    end)
+    vim.bo.shiftwidth = 2
+    vim.bo.tabstop = 2
+  end,
+})
+vim.api.nvim_create_autocmd('FileType', {
+  group = 'MyFileType',
+  pattern = { 'c', 'cpp' },
+  callback = function()
+    vim.keymap.set('n', '<leader>d', clang_format_buffer, { desc = 'Format buffer' })
   end,
 })
 
 -- Plugins
 require('config.lazy')
+vim.keymap.set('n', '<leader>l', '<Cmd>Lazy<CR>')
 
 -- Set custom colors for whitespace
 vim.api.nvim_set_hl(0, 'NonText', { fg = '#8917e6' })

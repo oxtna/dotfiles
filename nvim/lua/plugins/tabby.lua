@@ -2,6 +2,22 @@ return {
   {
     'nanozuki/tabby.nvim',
     event = 'VimEnter',
+    keys = {
+      {
+        '<leader>tr',
+        function()
+          vim.ui.input(
+            { prompt = 'Rename tab: ' },
+            function(input)
+              if input and input ~= '' then
+                vim.cmd('TabRename ' .. input)
+              end
+            end
+          )
+        end,
+        desc = 'Rename tab'
+      },
+    },
     config = function()
       local theme = {
         fill = 'TabLineFill',

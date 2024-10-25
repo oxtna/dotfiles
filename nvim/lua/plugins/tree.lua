@@ -3,6 +3,10 @@ return {
     'nvim-tree/nvim-tree.lua',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     event = 'VeryLazy',
+    keys = {
+      { '<F6>', '<Cmd>NvimTreeRefresh<CR><Cmd>NvimTreeToggle<CR>', desc = "NvimTree" },
+      { '<F7>', '<Cmd>NvimTreeRefresh<CR><Cmd>NvimTreeFindFile<CR>', desc = "NvimTree" },
+    },
     config = function()
       require('nvim-tree').setup({
         view = { adaptive_size = true },
@@ -19,8 +23,6 @@ return {
           },
         },
       })
-      vim.keymap.set('n', '<F6>', '<Cmd>NvimTreeRefresh<CR><Cmd>NvimTreeToggle<CR>')
-      vim.keymap.set('n', '<F7>', '<Cmd>NvimTreeRefresh<CR><Cmd>NvimTreeFindFile<CR>')
     end,
   }
 }

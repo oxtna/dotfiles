@@ -13,6 +13,10 @@ return {
         end,
       },
     },
+    keys = {
+      { '<leader>ff', '<Cmd>Telescope find_files<CR>', desc = 'Telescope find' },
+      { '<leader>fg', '<Cmd>Telescope live_grep<CR>', desc = 'Telescope grep' },
+    },
     config = function()
       require('telescope').setup({
         defaults = {
@@ -23,8 +27,6 @@ return {
         }
       })
       pcall(require('telescope').load_extension, 'fzf')
-      vim.keymap.set('n', '<leader>ff', '<Cmd>Telescope find_files<CR>')
-      vim.keymap.set('n', '<leader>fg', '<Cmd>Telescope live_grep<CR>')
     end,
   }
 }
