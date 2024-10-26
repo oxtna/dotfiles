@@ -82,6 +82,8 @@ vim.keymap.set('n', '<leader>tn', '<Cmd>tabnew<CR>', { desc = 'Open new tab' })
 vim.keymap.set('n', '<leader>tz', '<Cmd>tabprevious<CR>', { desc = 'Previous tab' })
 vim.keymap.set('n', '<leader>tx', '<Cmd>tabnext<CR>', { desc = 'Next tab' })
 vim.keymap.set('n', '<leader>tc', '<Cmd>tabclose<CR>', { desc = 'Close tab' })
+vim.keymap.set('n', '<leader>tmz', '<Cmd>-tabmove<CR>', { desc = 'Move tab left' })
+vim.keymap.set('n', '<leader>tmx', '<Cmd>+tabmove<CR>', { desc = 'Move tab right' })
 
 -- File formatting
 local function clang_format_buffer()
