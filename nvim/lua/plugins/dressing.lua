@@ -5,11 +5,13 @@ return {
     opts = {
       input = {
         relative = 'win',
-        border = { '󰣑', ' ', '·', '·', '󰣏', ' ', '·', '·' },
+        border = { '󰣐', ' ', '·', '·', '󰣏', ' ', '·', '·' },
+        win_options = { winhighlight = 'FloatBorder:DressingBorder,FloatTitle:DressingTitle' },
       },
       select = {
         relative = 'win',
-        border = { '󰣑', ' ', '·', '·', '󰣏', ' ', '·', '·' },
+        border = { '󰣐', ' ', '·', '·', '󰣏', ' ', '·', '·' },
+        win_options = { winhighlight = 'FloatBorder:DressingBorder,FloatTitle:DressingTitle' },
       },
     },
   }

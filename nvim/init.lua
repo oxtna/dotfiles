@@ -114,11 +114,13 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
+-- Custom highlight colors
+vim.api.nvim_set_hl(0, 'NonText', { fg = '#8917e6' })
+vim.api.nvim_set_hl(0, 'Whitespace', { fg = '#469494' })
+vim.api.nvim_set_hl(0, 'DressingBorder', { fg = '#cc0036', bg = '#16161e' })
+vim.api.nvim_set_hl(0, 'DressingTitle', { fg = '#2b92e0', bg = '#16161e' })
+
 -- Plugins
 require('config.lazy')
 vim.keymap.set('n', '<leader>l', '<Cmd>Lazy<CR>')
-
--- Set custom colors for whitespace
-vim.api.nvim_set_hl(0, 'NonText', { fg = '#8917e6' })
-vim.api.nvim_set_hl(0, 'Whitespace', { fg = '#469494' })
 
