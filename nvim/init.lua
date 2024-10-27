@@ -64,16 +64,16 @@ vim.keymap.set({ 'n', 'v' }, '<Right>', '')
 vim.keymap.set({ 'n', 'v' }, '<Up>', '')
 vim.keymap.set({ 'n', 'v' }, '<Down>', '')
 
+-- Buffer navigation
+vim.keymap.set('n', '<leader>z', '<Cmd>bp<CR>')
+vim.keymap.set('n', '<leader>x', '<Cmd>bn<CR>')
+vim.keymap.set('n', '<leader>c', '<Cmd>bd<CR>')
+
 -- Window navigation
 vim.keymap.set('n', '<C-h>', '<C-w>h')
 vim.keymap.set('n', '<C-j>', '<C-w>j')
 vim.keymap.set('n', '<C-k>', '<C-w>k')
 vim.keymap.set('n', '<C-l>', '<C-w>l')
-
--- Buffer navigation
-vim.keymap.set('n', '<leader>z', '<Cmd>bp<CR>')
-vim.keymap.set('n', '<leader>x', '<Cmd>bn<CR>')
-vim.keymap.set('n', '<leader>c', '<Cmd>bd<CR>')
 
 -- Tab navigation
 vim.keymap.set({ 'n', 'v' }, 'gt', '')
