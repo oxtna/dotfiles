@@ -11,7 +11,7 @@ AlwaysBreakBeforeMultilineStrings: true
 AlwaysBreakTemplateDeclarations: Yes
 AlignConsecutiveMacros: AcrossEmptyLinesAndComments
 AlignEscapedNewlines: Left
-AlignAfterOpenBracket: AlwaysBreak
+AlignAfterOpenBracket: BlockIndent
 AlignTrailingComments: true
 AllowAllArgumentsOnNextLine: true
 AllowShortFunctionsOnASingleLine: InlineOnly
