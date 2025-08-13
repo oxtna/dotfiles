@@ -11,5 +11,5 @@
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "1f08ed60cafc8f6168b72b80be2b2ea149813e55" },
   "telescope.nvim": { "branch": "0.1.x", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
   "tokyonight.nvim": { "branch": "main", "commit": "057ef5d260c1931f1dffd0f052c685dcd14100a3" },
-  "vshow.nvim": { "branch": "main", "commit": "08b05fae35b35e1cf1292148ff2d44da09f27ed5" }
+  "vshow.nvim": { "branch": "main", "commit": "70274b51e1d16de94421d42657a2a6cae9dca45e" }
 }
