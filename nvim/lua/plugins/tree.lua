@@ -4,8 +4,8 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     event = 'VeryLazy',
     keys = {
-      { '<F6>', '<Cmd>NvimTreeRefresh<CR><Cmd>NvimTreeToggle<CR>', desc = "NvimTree" },
-      { '<F7>', '<Cmd>NvimTreeRefresh<CR><Cmd>NvimTreeFindFile<CR>', desc = "NvimTree" },
+      { '<F6>', '<Cmd>NvimTreeRefresh<CR><Cmd>NvimTreeToggle<CR>', desc = 'NvimTree' },
+      { '<F7>', '<Cmd>NvimTreeRefresh<CR><Cmd>NvimTreeFindFile<CR>', desc = 'NvimTree' },
     },
     config = function()
       require('nvim-tree').setup({
