@@ -6,6 +6,14 @@
         {
             "command": 
             {
+                "action": "copy",
+                "singleLine": false
+            },
+            "id": "User.copy.644BA8F2"
+        },
+        {
+            "command": 
+            {
                 "action": "globalSummon",
                 "desktop": "toCurrent",
                 "dropdownDuration": 0,
@@ -15,16 +23,12 @@
             "id": "User.globalSummon.C79E99FF"
         },
         {
-            "command": 
-            {
-                "action": "copy",
-                "singleLine": false
-            },
-            "id": "User.copy.644BA8F2"
-        },
-        {
             "command": "paste",
             "id": "User.paste"
+        },
+        {
+            "command": "find",
+            "id": "User.find"
         },
         {
             "command": 
@@ -34,10 +38,6 @@
                 "splitMode": "duplicate"
             },
             "id": "User.splitPane.A6751878"
-        },
-        {
-            "command": "find",
-            "id": "User.find"
         }
     ],
     "alwaysOnTop": false,
@@ -60,12 +60,12 @@
             "keys": "win+`"
         },
         {
-            "id": "User.paste",
-            "keys": "ctrl+v"
-        },
-        {
             "id": "User.find",
             "keys": "ctrl+shift+f"
+        },
+        {
+            "id": "User.paste",
+            "keys": "ctrl+v"
         },
         {
             "id": "User.copy.644BA8F2",
@@ -106,6 +106,7 @@
             "historySize": 9001,
             "padding": "8, 8, 8, 8",
             "scrollbarState": "hidden",
+            "showMarksOnScrollbar": true,
             "snapOnInput": true,
             "suppressApplicationTitle": true,
             "useAcrylic": false
@@ -146,6 +147,14 @@
                 "source": "Windows.Terminal.Wsl"
             },
             {
+                "colorScheme": "solar dark",
+                "guid": "{4437e2ce-e870-52dd-8510-823d482a10f9}",
+                "hidden": false,
+                "intenseTextStyle": "all",
+                "name": "Ubuntu",
+                "source": "Microsoft.WSL"
+            },
+            {
                 "guid": "{6c23d064-3912-5169-9bd2-18ea7d9ea5d6}",
                 "hidden": true,
                 "name": "Developer Command Prompt for VS 2022",
@@ -162,15 +171,6 @@
                 "hidden": true,
                 "name": "Visual Studio Debug Console",
                 "source": "VSDebugConsole"
-            },
-            {
-                "adjustIndistinguishableColors": "always",
-                "colorScheme": "solar dark",
-                "guid": "{4437e2ce-e870-52dd-8510-823d482a10f9}",
-                "hidden": false,
-                "icon": "C:\\Users\\rafal\\Documents\\win-terminal\\ubuntu-icon.png",
-                "name": "Ubuntu",
-                "source": "Microsoft.WSL"
             },
             {
                 "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
