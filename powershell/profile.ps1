@@ -1,6 +1,4 @@
 # Aliases
-New-Alias vim nvim
-New-Alias vi nvim
 New-Alias l Get-ChildItem
 New-Alias grep rg
 
