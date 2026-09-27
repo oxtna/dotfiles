@@ -155,6 +155,18 @@
                 "source": "Microsoft.WSL"
             },
             {
+                "guid": "{d3781247-2fa5-563d-b7eb-07208cee7e05}",
+                "hidden": false,
+                "name": "Developer Command Prompt for VS 2026",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{3311b053-aaf7-58ce-b6e0-1eb61def2e90}",
+                "hidden": false,
+                "name": "Developer PowerShell for VS 2026",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
                 "guid": "{6c23d064-3912-5169-9bd2-18ea7d9ea5d6}",
                 "hidden": true,
                 "name": "Developer Command Prompt for VS 2022",
@@ -177,18 +189,6 @@
                 "hidden": false,
                 "name": "Git Bash",
                 "source": "Git"
-            },
-            {
-                "guid": "{d3781247-2fa5-563d-b7eb-07208cee7e05}",
-                "hidden": false,
-                "name": "Developer Command Prompt for VS 18",
-                "source": "Windows.Terminal.VisualStudio"
-            },
-            {
-                "guid": "{3311b053-aaf7-58ce-b6e0-1eb61def2e90}",
-                "hidden": false,
-                "name": "Developer PowerShell for VS 18",
-                "source": "Windows.Terminal.VisualStudio"
             }
         ]
     },
