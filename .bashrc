@@ -82,7 +82,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# set neovim as the default text editor
-export EDITOR=nvim
-export VISUAL=nvim
+# set vim as the default text editor
+export EDITOR=vim
+export VISUAL=vim
 
