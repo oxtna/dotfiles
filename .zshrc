@@ -72,6 +72,4 @@ alias l='ls --color=auto -F'
 alias ll='ls --color=auto -lFAh'
 alias la='ls --color=auto -FA'
 alias lr='ls --color=auto -FAR'
-alias lt='ls --color=auto -ltFAh'
-alias lS='ls --color=auto -1FSs'
 
