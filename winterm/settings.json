@@ -1,10 +1,10 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": 
+    "actions":
     [
         {
-            "command": 
+            "command":
             {
                 "action": "copy",
                 "singleLine": false
@@ -12,7 +12,7 @@
             "id": "User.copy.644BA8F2"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "globalSummon",
                 "desktop": "toCurrent",
@@ -31,7 +31,7 @@
             "id": "User.find"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "splitPane",
                 "split": "auto",
@@ -48,12 +48,16 @@
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "disabledProfileSources":
+    [
+        "Windows.Terminal.Azure"
+    ],
     "experimental.detectURLs": true,
     "firstWindowPreference": "defaultProfile",
     "initialCols": 160,
     "initialPosition": ",",
-    "initialRows": 36,
-    "keybindings": 
+    "initialRows": 40,
+    "keybindings":
     [
         {
             "id": "User.globalSummon.C79E99FF",
@@ -78,19 +82,20 @@
     ],
     "launchMode": "default",
     "minimizeToNotificationArea": true,
-    "newTabMenu": 
+    "newTabMenu":
     [
         {
             "type": "remainingProfiles"
         }
     ],
     "newTabPosition": "afterCurrentTab",
-    "profiles": 
+    "profiles":
     {
-        "defaults": 
+        "defaults":
         {
             "altGrAliasing": true,
             "antialiasingMode": "grayscale",
+            "autoMarkPrompts": true,
             "backgroundImageAlignment": "bottomRight",
             "backgroundImageStretchMode": "none",
             "bellStyle": "taskbar",
@@ -98,7 +103,7 @@
             "colorScheme": "Campbell",
             "cursorHeight": 15,
             "cursorShape": "vintage",
-            "font": 
+            "font":
             {
                 "face": "CodeNewRoman Nerd Font Propo",
                 "size": 12
@@ -111,7 +116,7 @@
             "suppressApplicationTitle": true,
             "useAcrylic": false
         },
-        "list": 
+        "list":
         [
             {
                 "commandline": "%SystemRoot%\\System32\\cmd.exe",
@@ -120,39 +125,20 @@
                 "name": "Command Prompt"
             },
             {
-                "colorScheme": "nightfox",
+                "colorScheme": "Campbell Powershell",
+                "cursorColor": "#F17B19",
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "name": "PowerShell Core",
+                "opacity": 85,
                 "source": "Windows.Terminal.PowershellCore",
-                "tabTitle": "PowerShell Core"
-            },
-            {
-                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-                "hidden": true,
-                "name": "Azure Cloud Shell",
-                "source": "Windows.Terminal.Azure"
+                "tabTitle": "PowerShell Core",
+                "useAcrylic": true
             },
             {
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": true,
                 "name": "Windows PowerShell"
-            },
-            {
-                "colorScheme": "Tokyo Night",
-                "guid": "{bc2da056-dd06-5879-b969-1dfcefc8d2c7}",
-                "hidden": false,
-                "icon": "C:\\Users\\rafal\\Documents\\dotfiles\\winterm\\tumbleweed-icon.png",
-                "name": "openSUSE Tumbleweed",
-                "source": "Windows.Terminal.Wsl"
-            },
-            {
-                "colorScheme": "solar dark",
-                "guid": "{4437e2ce-e870-52dd-8510-823d482a10f9}",
-                "hidden": false,
-                "intenseTextStyle": "all",
-                "name": "Ubuntu",
-                "source": "Microsoft.WSL"
             },
             {
                 "guid": "{d3781247-2fa5-563d-b7eb-07208cee7e05}",
@@ -167,18 +153,6 @@
                 "source": "Windows.Terminal.VisualStudio"
             },
             {
-                "guid": "{6c23d064-3912-5169-9bd2-18ea7d9ea5d6}",
-                "hidden": true,
-                "name": "Developer Command Prompt for VS 2022",
-                "source": "Windows.Terminal.VisualStudio"
-            },
-            {
-                "guid": "{e9abf77c-2217-523d-9dc6-65db8c57c04b}",
-                "hidden": false,
-                "name": "Developer PowerShell for VS 2022",
-                "source": "Windows.Terminal.VisualStudio"
-            },
-            {
                 "guid": "{16208362-94fc-5b1f-a491-5b2624d5ab56}",
                 "hidden": true,
                 "name": "Visual Studio Debug Console",
@@ -189,10 +163,46 @@
                 "hidden": false,
                 "name": "Git Bash",
                 "source": "Git"
+            },
+            {
+                "colorScheme": "Ubuntu",
+                "cursorColor": "#F17B19",
+                "guid": "{4437e2ce-e870-52dd-8510-823d482a10f9}",
+                "hidden": false,
+                "intenseTextStyle": "all",
+                "name": "Ubuntu",
+                "opacity": 85,
+                "selectionBackground": "#D5D5D5",
+                "source": "Microsoft.WSL",
+                "useAcrylic": true
+            },
+            {
+                "colorScheme": "solar dark",
+                "experimental.retroTerminalEffect": false,
+                "font":
+                {
+                    "colorGlyphs": true
+                },
+                "guid": "{f6c2d095-c638-5775-9e07-feee0111212c}",
+                "hidden": false,
+                "intenseTextStyle": "all",
+                "name": "openSUSE-Tumbleweed",
+                "opacity": 85,
+                "source": "Microsoft.WSL",
+                "useAcrylic": true
+            },
+            {
+                "colorScheme": "Dimidium",
+                "guid": "{731ab210-41aa-5196-886c-f59bbfe3e7a9}",
+                "hidden": false,
+                "intenseTextStyle": "all",
+                "name": "NixOS",
+                "opacity": 90,
+                "source": "Microsoft.WSL"
             }
         ]
     },
-    "schemes": 
+    "schemes":
     [
         {
             "background": "#1A1B2C",
@@ -206,7 +216,7 @@
             "brightRed": "#F7768E",
             "brightWhite": "#C0CAF5",
             "brightYellow": "#E0AF68",
-            "cursorColor": "#C0CAF5",
+            "cursorColor": "#F17B19",
             "cyan": "#7DCFFF",
             "foreground": "#A9B1DC",
             "green": "#73DACA",
@@ -264,31 +274,33 @@
             "yellow": "#E4CC60"
         }
     ],
+    "searchWebDefaultQueryUrl": "https://www.qwant.com/?q=%22%s%22",
     "showAdminShield": true,
+    "showTabsFullscreen": true,
     "showTabsInTitlebar": true,
     "showTerminalTitleInTitlebar": true,
     "snapToGridOnResize": true,
-    "startupActions": null,
-    "tabSwitcherMode": "inOrder",
+    "startupActions": "",
+    "tabSwitcherMode": false,
     "tabWidthMode": "equal",
-    "theme": "Mica",
-    "themes": 
+    "theme": "winterm-btw",
+    "themes":
     [
         {
             "name": "Mica",
-            "tab": 
+            "tab":
             {
                 "background": "terminalBackground",
                 "iconStyle": "default",
                 "showCloseButton": "hover",
                 "unfocusedBackground": "#00000000"
             },
-            "tabRow": 
+            "tabRow":
             {
                 "background": "#00000000",
                 "unfocusedBackground": "#00000000"
             },
-            "window": 
+            "window":
             {
                 "applicationTheme": "dark",
                 "experimental.rainbowFrame": false,
@@ -296,12 +308,36 @@
                 "unfocusedFrame": null,
                 "useMica": true
             }
+        },
+        {
+            "name": "winterm-btw",
+            "tab":
+            {
+                "background": "terminalBackground",
+                "iconStyle": "default",
+                "showCloseButton": "hover",
+                "unfocusedBackground": "terminalBackground"
+            },
+            "tabRow":
+            {
+                "background": "#080808ff",
+                "unfocusedBackground": "#333333ff"
+            },
+            "window":
+            {
+                "applicationTheme": "system",
+                "experimental.rainbowFrame": false,
+                "frame": "terminalBackground",
+                "unfocusedFrame": null,
+                "useMica": false
+            }
         }
     ],
     "trimBlockSelection": false,
     "useAcrylicInTabRow": false,
+    "compatibility.enableUnfocusedAcrylic": true,
     "warning.confirmCloseAllTabs": true,
     "warning.largePaste": true,
-    "warning.multiLinePaste": "automatic",
-    "windowingBehavior": "useNew"
+    "warning.multiLinePaste": true,
+    "windowingBehavior": "useExisting"
 }

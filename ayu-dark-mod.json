@@ -1,0 +1,63 @@
+{
+    "workbench.colorCustomizations": {
+        "[Ayu Dark*]": {
+            "modernActivityBarItem.activeForeground": "#ffb454",
+            "activityBarBadge.foreground": "#000000",
+            "activityBarBadge.background": "#ffffffbc",
+            "editor.border": "default",
+            "surface.border": "default",
+            "modernPanel.border": "default",
+            "editorBracketMatch.border": "default"
+        }
+    },
+    "editor.tokenColorCustomizations": {
+        "[Ayu Dark*]": {
+            "textMateRules": [
+                {
+                    "scope": "entity.name.function",
+                    "settings": {
+                        "foreground": "#59c2ff"
+                    }
+                },
+                {
+                    "scope": "support.function",
+                    "settings": {
+                        "foreground": "#3b6cc0"
+                    }
+                },
+                {
+                    "scope": "storage.type.function",
+                    "settings": {}
+                },
+                {
+                    "scope": "keyword",
+                    "settings": {}
+                },
+                {
+                    "scope": "keyword.operator",
+                    "settings": {
+                        "foreground": "#ff8f40"
+                    }
+                },
+                {
+                    "scope": "constant.language",
+                    "settings": {
+                        "foreground": "#00aebb"
+                    }
+                },
+                {
+                    "scope": "constant.character",
+                    "settings": {
+                        "foreground": "#00aebb"
+                    }
+                },
+                {
+                    "scope": "constant.numeric",
+                    "settings": {
+                        "foreground": "#00aebb"
+                    }
+                }
+            ]
+        }
+    }
+}
